@@ -7,7 +7,7 @@
     </el-header>
     <el-container>
       <el-aside width="200px">
-      <SideBar currentindex=2></SideBar>
+      <SideBar currentindex='2'></SideBar>
       </el-aside>
       <el-main>Favourite</el-main>
     </el-container>

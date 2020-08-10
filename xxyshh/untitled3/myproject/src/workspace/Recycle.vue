@@ -7,7 +7,7 @@
     </el-header>
     <el-container>
       <el-aside width="200px">
-      <SideBar  currentindex=5></SideBar>
+      <SideBar  currentindex='5'></SideBar>
       </el-aside>
       <el-main>Recycle</el-main>
     </el-container>

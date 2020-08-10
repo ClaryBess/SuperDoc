@@ -7,7 +7,7 @@
     </el-header>
     <el-container>
       <el-aside width="200px">
-      <SideBar  currentindex=3></SideBar>
+      <SideBar  currentindex='3'></SideBar>
       </el-aside>
       <el-main>Created</el-main>
     </el-container>
