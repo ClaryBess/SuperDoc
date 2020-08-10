@@ -20,8 +20,10 @@
         <div class="regform">
           <img src="../assets/ok.png" alt="">
           <h3> 注册成功</h3>
-          <el-row style="margin-left: 4%">
-            <el-button round>跳转主页</el-button>
+          <el-row >
+            <router-link to="/Homepage" class="write">
+              <el-button round>跳转个人主页</el-button>
+            </router-link>
           </el-row>
         </div>
       </el-main>
@@ -34,7 +36,7 @@
   import NavBarOrigin from "./NavBarOrigin";
 
   export default {
-    name: "Register2",
+    name: "Register3",
     components: {NavBar, NavBarOrigin},
     data() {
       return {
