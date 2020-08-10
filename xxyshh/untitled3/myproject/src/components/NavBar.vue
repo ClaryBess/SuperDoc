@@ -161,7 +161,6 @@
     background-color: #ffffff;
     border-bottom-width: 1px;
     display: flex;
-    position: fixed;
   }
 
   .logo {
