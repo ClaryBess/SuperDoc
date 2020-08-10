@@ -53,7 +53,7 @@
             </el-col>
           </el-form-item>
         </el-form>
-        <SliderVerificationCode v-model="slider" />
+        <SliderVerificationCode v-model="slider" background="#CCCCCC"/>
       </div>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>

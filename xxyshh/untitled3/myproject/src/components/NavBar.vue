@@ -40,10 +40,10 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="write">
+          <router-link to="/edit" class="write">
             <i class="iconfont iconpin-fill"></i>
             写文章
-          </a>
+          </router-link>
         </li>
       </ul>
 

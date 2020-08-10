@@ -36,7 +36,7 @@
       data(){
         return{
           headUrl: require('../assets/head.jpg'),
-          hasLogin: false
+          hasLogin: true
         }
       }
     }
