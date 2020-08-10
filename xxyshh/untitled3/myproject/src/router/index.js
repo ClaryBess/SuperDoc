@@ -17,7 +17,8 @@ import Created from "../workspace/Created";
 import Team from "../workspace/Team";
 import Recycle from "../workspace/Recycle";
 
-Vue.use(Router)
+Vue.use(VueRouter)
+
 const routes = [{
     path: '/hello',
     name: '/hello',
