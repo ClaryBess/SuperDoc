@@ -4,6 +4,7 @@
       <NavBarOrigin>
       </NavBarOrigin>
     </el-header>
+    <div id="color">
     <div class="main">
       <el-main>
         <div  class="title">
@@ -48,6 +49,7 @@
 
         </div>
       </el-main>
+    </div>
     </div>
   </el-container>
 </template>
@@ -139,6 +141,11 @@
 </script>
 
 <style scoped>
+  #color{
+    height: 800px;
+    background-color: #f1f8fa;
+  }
+
   .main{
     width: 70%;
     margin: 0 auto;

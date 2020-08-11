@@ -108,8 +108,13 @@
 
 <style scoped>
   .main{
-    width: 89%;
+    width: 100%;
     margin: 0 auto;
+    background-color: #f1f8fa;
+  }
+  .info{
+    margin-top: 3%;
+    margin-left: 78px;
   }
   .demo-ruleForm {
    margin-left: 17%;
