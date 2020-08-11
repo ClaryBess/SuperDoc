@@ -16,6 +16,7 @@ import Favourite from "../workspace/Favourite";
 import Created from "../workspace/Created";
 import Team from "../workspace/Team";
 import Recycle from "../workspace/Recycle";
+import Change from "../components/Change";
 
 Vue.use(VueRouter)
 
@@ -89,7 +90,11 @@ const routes = [{
     name: 'recycle',
     component: Recycle
   },
-
+  {
+    path: '/detail/1',
+    name: 'change',
+    component: Change
+  }
 ]
 const router = new VueRouter({
   routes,

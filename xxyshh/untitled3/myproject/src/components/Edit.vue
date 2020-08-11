@@ -34,7 +34,7 @@
 
                 <el-form-item class="button-row">
                   <el-button type="primary" @click="onSubmit" >提交</el-button>
-                  <el-button style="margin-left: 40px">取消</el-button>
+                  <el-button style="margin-left: 30px">取消</el-button>
                 </el-form-item>
               </el-form>
             </div>

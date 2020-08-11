@@ -1,49 +1,32 @@
 // 这是登录后导航栏组件，通过属性headSrc来更换头像
 <template>
   <div id="root" class="tabBar">
-    <a href="#" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></a>
+    <router-link to="/" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
 
     <ul class="nav">
-      <li v-for="(item,index) in itemList" :key="index">
-        <a href="#">{{item.title}}</a>
-        <ul class="subNav">
-          <li v-for="(subItem,subIndex) in item.subItemList" :key="subIndex">
-            <a href="#">
-              <i :class="subItem.subIcon"></i>
-              <span>{{subItem.subTitle}}</span>
-            </a>
-          </li>
-        </ul>
+      <li>
+        <router-link to="/workspace">工作台</router-link>
+      </li>
+      <li>
+        <a href="#">消息</a>
       </li>
     </ul>
 
     <div :class="search">
       <a href="#"><i class="iconfont iconsearch"></i></a>
-      <input type="text" class="searchInput" placeholder="搜索" @focus="inputFocus" @blur="inputBlur" />
+      <input type="text" class="searchInput" placeholder="搜索我的文档" @focus="inputFocus" @blur="inputBlur" />
     </div>
-
     <div class="right">
-
       <ul class="rightNav">
         <li class="dropdown">
-          <a href="#">
+          <router-link to="HomePage">
               <img :src=headSrc class="userhead" />
-            <i class="iconfont iconarrow-down"></i>
-          </a>
-          <ul class="dropdownNav">
-            <li v-for="(item, index) in userList" :key="index">
-              <a href="#">
-                <i :class="item.subIcon"></i>
-                <span>{{item.subTitle}}</span>
-              </a>
-            </li>
-          </ul>
+          </router-link>
         </li>
         <li>
-          <router-link to="/edit" class="write">
-            <i class="iconfont iconpin-fill"></i>
-            写文章
-          </router-link>
+          <div class="write">
+            退出
+          </div>
         </li>
       </ul>
 
@@ -64,80 +47,15 @@
       data() {
         return {
           itemList: [{
-            title: '发现',
+            title: '我的工作台',
             subItemList: []
           },
             {
-              title: '关注',
-              subItemList: []
-            },
-            {
               title: '消息',
-              subItemList: [{
-                subTitle: '评论',
-                subIcon: 'iconfont icon-message'
-              },
-                {
-                  subTitle: '简信',
-                  subIcon: 'iconfont icon-message'
-                },
-                {
-                  subTitle: '投稿请求',
-                  subIcon: 'iconfont icon-message'
-                },
-                {
-                  subTitle: '喜欢和赞',
-                  subIcon: 'iconfont icon-message'
-                },
-                {
-                  subTitle: '关注',
-                  subIcon: 'iconfont icon-message'
-                },
-                {
-                  subTitle: '赞赏和付费',
-                  subIcon: 'iconfont icon-message'
-                },
-                {
-                  subTitle: '其他消息',
-                  subIcon: 'iconfont icon-message'
-                }
-              ]
+              subItemList: []
             }
           ],
-          userList: [
-            {
-              subTitle: '我的主页',
-              subIcon: 'iconfont icon-message'
-            },
-            {
-              subTitle: '收藏的文章',
-              subIcon: 'iconfont icon-message'
-            },
-            {
-              subTitle: '喜欢的文章',
-              subIcon: 'iconfont icon-message'
-            },
-            {
-              subTitle: '已购内容',
-              subIcon: 'iconfont icon-message'
-            },
-            {
-              subTitle: '我的钱包',
-              subIcon: 'iconfont icon-message'
-            },
-            {
-              subTitle: '设置',
-              subIcon: 'iconfont icon-message'
-            },
-            {
-              subTitle: '帮助与反馈',
-              subIcon: 'iconfont icon-message'
-            },
-            {
-              subTitle: '退出',
-              subIcon: 'iconfont icon-message'
-            }
-          ],
+          userList: [],
           search:'search'
         }
       },
@@ -153,6 +71,10 @@
 </script>
 
 <style scoped>
+  .LoginForm{
+    margin: 0 auto;
+    width: 80%;
+  }
   .tabBar {
     height: 56px;
     width: 100%;
@@ -320,29 +242,38 @@
   }
 
   .rightNav li:first-child a {
-    color: rgb(156, 149, 149);
+    width: 65px;
+    color: #333;
+  }
+
+  .rightNav .login:hover{
+    background-color: #f5f5f5;
   }
 
   .write {
     width: 100px;
     height: 40px;
     display: inline-block;
-    background-color: #ea6f5a;
-    color: #fff;
+    background-color: #ffffff;
+    color: #ea6f5a;
     font-size: 15px;
     line-height: 40px;
     text-align: center;
     border-radius: 20px;
+    margin-left: 30px;
+    border-color: #ea6f5a;
+    border-style: solid;
+    border-width: thin;
   }
 
   .write:hover {
-    background-color: #e95338;
+    border-color: #e95338;
+    color: #e95338;
   }
 
   .dropdown {
     width: 90px;
     margin: 0 20px;
-    z-index: 999;
   }
 
   .dropdown>a {

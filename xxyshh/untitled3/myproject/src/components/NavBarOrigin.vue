@@ -2,26 +2,7 @@
 <template>
   <div>
     <div id="root" class="tabBar">
-      <a href="#" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></a>
-      <ul class="nav">
-        <li v-for="(item,index) in itemList" :key="index">
-          <a href="#">{{item.title}}</a>
-          <ul class="subNav">
-            <li v-for="(subItem,subIndex) in item.subItemList" :key="subIndex">
-              <a href="#">
-                <i :class="subItem.subIcon"></i>
-                <span>{{subItem.subTitle}}</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-      <div :class="search">
-        <a href="#"><i class="iconfont iconsearch"></i></a>
-        <input type="text" class="searchInput" placeholder="搜索" @focus="inputFocus" @blur="inputBlur" />
-      </div>
-
+      <router-link to="/Home" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
       <div class="right">
 
         <ul class="rightNav">
@@ -68,81 +49,6 @@
     name: "NavBarOrigin",
     data() {
       return {
-        itemList: [{
-          title: '发现',
-          subItemList: []
-        },
-          {
-            title: '关注',
-            subItemList: []
-          },
-          {
-            title: '消息',
-            subItemList: [{
-              subTitle: '评论',
-              subIcon: 'iconfont icon-message'
-            },
-              {
-                subTitle: '简信',
-                subIcon: 'iconfont icon-message'
-              },
-              {
-                subTitle: '投稿请求',
-                subIcon: 'iconfont icon-message'
-              },
-              {
-                subTitle: '喜欢和赞',
-                subIcon: 'iconfont icon-message'
-              },
-              {
-                subTitle: '关注',
-                subIcon: 'iconfont icon-message'
-              },
-              {
-                subTitle: '赞赏和付费',
-                subIcon: 'iconfont icon-message'
-              },
-              {
-                subTitle: '其他消息',
-                subIcon: 'iconfont icon-message'
-              }
-            ]
-          }
-        ],
-        userList: [
-          {
-            subTitle: '我的主页',
-            subIcon: 'iconfont icon-message'
-          },
-          {
-            subTitle: '收藏的文章',
-            subIcon: 'iconfont icon-message'
-          },
-          {
-            subTitle: '喜欢的文章',
-            subIcon: 'iconfont icon-message'
-          },
-          {
-            subTitle: '已购内容',
-            subIcon: 'iconfont icon-message'
-          },
-          {
-            subTitle: '我的钱包',
-            subIcon: 'iconfont icon-message'
-          },
-          {
-            subTitle: '设置',
-            subIcon: 'iconfont icon-message'
-          },
-          {
-            subTitle: '帮助与反馈',
-            subIcon: 'iconfont icon-message'
-          },
-          {
-            subTitle: '退出',
-            subIcon: 'iconfont icon-message'
-          }
-        ],
         search:'search',
         dialogFormVisible: false,
         labelPos: 'right',
@@ -159,7 +65,7 @@
       },
       inputBlur: function() {
         this.search = 'search'
-      }
+      },
     }
   }
 </script>
