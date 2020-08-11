@@ -1,11 +1,12 @@
 <template>
  <div class="docs" >
       <div class="docs-item">
-        <img class="docimg" src="../assets/文档.svg" @click="itemClick">
+        <img class="docimg" src="@/assets/团队.svg" @click="itemClick">
         <div class="docs-info" @click="itemClick">
-          <p>{{docsItem.title}}</p>
+          <p>团队名称：{{teamsItem.title}}</p>
+          <p>创建者：</p>
         </div>
-        <img class="img" src="../assets/删除.svg">
+        <img class="img" src="@/assets/删除.svg">
         <img class="img" :src="collectedurl" alt="" @click="collectDoc">
       </div>
   </div>
@@ -13,18 +14,18 @@
 </template>
 
 <script>
-import img1 from "../assets/收藏.svg";
-import img2 from '../assets/收藏 (1).svg';
+import img1 from "@/assets/收藏.svg";
+import img2 from '@/assets/收藏 (1).svg';
 
 export default {
-  name: "DocListItem",
+  name: "TeamsListItem",
   data() {
     return{
       collectedurl: img1
     }
   },
   props: {
-      docsItem: {
+      teamsItem: {
         type: Object,
         default() {
           return {}
@@ -33,7 +34,7 @@ export default {
     },
   methods: {
       itemClick() {
-        this.$router.push('/detail/' + this.docsItem.id)
+        this.$router.push('/team/' + this.teamsItem.id)
       },
       collectDoc() {
         if(this.collectedurl == img1){
@@ -74,16 +75,10 @@ export default {
     position: relative;
     padding-left: 0;
     padding-top: 4px;
+    padding-bottom: 4px;    
     padding-right: 20px;
     overflow: hidden;
     text-align: left;
-  }
-
-  .docs-info p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-bottom: 3px;
   }
 
 </style>

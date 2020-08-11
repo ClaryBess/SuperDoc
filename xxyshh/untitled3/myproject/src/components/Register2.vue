@@ -4,12 +4,10 @@
       <NavBarOrigin>
       </NavBarOrigin>
     </el-header>
-    <div id="color">
     <div class="main">
       <el-main>
-        <el-card class="box-card">
         <div  class="title">
-          <p style="margin-left: 50px">注册新账号</p>
+          <p>注册新账号</p>
         </div>
         <div class="step">
           <el-progress :percentage="percentage" :color="customColorMethod"></el-progress><br/><br/>
@@ -57,9 +55,7 @@
           </el-form>
 
         </div>
-        </el-card>
       </el-main>
-    </div>
     </div>
   </el-container>
 </template>
@@ -141,13 +137,9 @@
 </script>
 
 <style scoped>
-  #color{
-    height: 800px;
-    background-color: #f1f8fa;
-  }
   .main{
     width: 70%;
-    margin: 2% auto;
+    margin: 0 auto;
   }
   .title{
     width: 100%;

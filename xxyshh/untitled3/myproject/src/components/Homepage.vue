@@ -77,7 +77,6 @@
           ]
         },
         percentage: 50,
-
       };
     },
     methods: {
@@ -109,13 +108,8 @@
 
 <style scoped>
   .main{
-    width: 100%;
+    width: 89%;
     margin: 0 auto;
-    background-color: #f1f8fa;
-  }
-  .info{
-    margin-top: 3%;
-    margin-left: 78px;
   }
   .demo-ruleForm {
    margin-left: 17%;
