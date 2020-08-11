@@ -9,6 +9,7 @@ import Register3 from "../components/Register3";
 import Edit from "../components/Edit";
 import Homepage from "../components/Homepage";
 import HomepageEdit from "../components/HomepageEdit";
+import Welcome from "../components/Welcome";
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/homepageedit',
       name: 'homepageedit',
       component: HomepageEdit
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: Welcome
     }
   ]
 })
