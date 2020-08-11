@@ -7,7 +7,7 @@
     </el-header>
     <el-container>
       <el-aside width="200px">
-      <SideBar  currentindex='4'></SideBar>
+      <SideBar  currentindex=4></SideBar>
       </el-aside>
       <el-main>
         <h2 class="h2color">加入的团队</h2>

@@ -9,6 +9,7 @@ import Register3 from "../components/Register3";
 import Edit from "../components/Edit";
 import Homepage from "../components/Homepage";
 import HomepageEdit from "../components/HomepageEdit";
+import Welcome from "../components/Welcome";
 
 import WorkSpace from "../workspace/WorkSpace";
 import Recently from "../workspace/Recently";
@@ -16,6 +17,7 @@ import Favourite from "../workspace/Favourite";
 import Created from "../workspace/Created";
 import Team from "../workspace/Team";
 import Recycle from "../workspace/Recycle";
+import Change from "../components/Change";
 
 Vue.use(VueRouter)
 
@@ -89,7 +91,16 @@ const routes = [{
     name: 'recycle',
     component: Recycle
   },
-
+  {
+    path: '/detail/1',
+    name: 'change',
+    component: Change
+  },
+  {
+    path: '/welcome',
+    name: 'welcome',
+    component: Welcome
+  }
 ]
 const router = new VueRouter({
   routes,
