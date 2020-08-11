@@ -1,7 +1,7 @@
 // 这是登录后导航栏组件，通过属性headSrc来更换头像
 <template>
   <div id="root" class="tabBar">
-    <router-link to="/welcome" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
+    <router-link to="/" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
 
     <ul class="nav">
       <li>
@@ -20,7 +20,7 @@
       <ul class="rightNav">
         <li class="dropdown">
           <router-link to="HomePage">
-              <img :src=headSrc class="userhead" />
+              <img :src='headSrc' class="userhead" />
           </router-link>
         </li>
         <li>
@@ -38,14 +38,9 @@
 <script>
     export default {
         name: "NavBar",
-      props: {
-        headSrc: {
-          type: String,
-          default: "../assets/head.jpg"
-        }
-      },
       data() {
         return {
+          headSrc: require("../assets/head.jpg"),
           itemList: [{
             title: '我的工作台',
             subItemList: []

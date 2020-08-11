@@ -8,11 +8,11 @@
       <el-main>
         <div class="info">
           <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-            <el-card class="box-card">
+            <el-card class="box-card" >
               <div slot="header" class="clearfix">
                 <p style="margin-top:5px; margin-left: 66px; height: 14px; font-size: 29px; color: #333333">
-                  个人空间
-                  <el-button style="float: right; font-size: 16px; padding: 15px" type="text" @click="submitForm('ruleForm')">
+                  <strong>个人空间</strong>
+                  <el-button style="float: right; font-size: 17px; padding: 15px" type="text" @click="submitForm('ruleForm')">
                     <i class="el-icon-edit-outline"></i> 修改信息</el-button>
                 </p>
               </div>
@@ -20,17 +20,17 @@
                 <el-form-item label="头像" prop="profile">
                   <el-avatar style="margin-left: 5px" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
                 </el-form-item>
-                <el-form-item label="用户名" prop="username" >
-                  <span style="color: #66b1ff">酒醉的蝴蝶</span>
+                <el-form-item  label="用户名" prop="username">
+                  <span style="color: #66b1ff; font-size: 17px">酒醉的蝴蝶</span>
                 </el-form-item>
                 <el-form-item label="邮箱" prop="email">
-                  <span style="color: #66b1ff">12345678@qq.com</span>
+                  <span style="color: #66b1ff; font-size: 17px">12345678@qq.com</span>
                 </el-form-item>
                 <el-form-item label="性别" prop="sex">
-                  <span style="color: #66b1ff">男</span>
+                  <span style="color: #66b1ff; font-size: 17px">男</span>
                 </el-form-item>
                 <el-form-item label="生日" prop="birth">
-                  <span style="color: #66b1ff">1999-09-09</span>
+                  <span style="color: #66b1ff; font-size: 17px">1999-09-09</span>
                 </el-form-item>
               </div>
             </el-card>
@@ -77,6 +77,7 @@
           ]
         },
         percentage: 50,
+
       };
     },
     methods: {
@@ -108,8 +109,13 @@
 
 <style scoped>
   .main{
-    width: 89%;
+    width: 100%;
     margin: 0 auto;
+    background-color: #f1f8fa;
+  }
+  .info{
+    margin-top: 3%;
+    margin-left: 78px;
   }
   .demo-ruleForm {
    margin-left: 17%;
