@@ -4,38 +4,42 @@
       <el-header>
         <NavBar :headSrc="headUrl" style="z-index: 9999"></NavBar>
       </el-header>
-      <el-main class="main-body">
-        <el-row>
-          <p class="top-title">编辑文档</p>
-        </el-row>
-        <div class="tips">
-          <p>你可以使用“模板”功能来快速创建文档</p>
-        </div>
-        <div style="margin-top: 40px;">
-          <el-form :model="docForm" label-width="80px">
+      <el-main>
+        <el-card class="main-body">
+          <div class="card">
             <el-row>
-              <el-form-item label="文档标题">
-                <el-input v-model="docForm.title"></el-input>
-              </el-form-item>
+              <p class="top-title">创建文档</p>
             </el-row>
-            <el-form-item label="文档权限">
-              <el-checkbox-group v-model="docForm.privilege">
-                <el-checkbox label="可查看" name="type"></el-checkbox>
-                <el-checkbox label="可评论" name="type"></el-checkbox>
-                <el-checkbox label="可编辑" name="type"></el-checkbox>
-                <el-checkbox label="可分享" name="type"></el-checkbox>
-              </el-checkbox-group>
-            </el-form-item>
-            <div class="editor">
-              <vue-ueditor-wrap v-model="docForm.doc" :config="ueConfig"></vue-ueditor-wrap>
+            <div class="tips">
+              <p>你可以使用“模板”功能来快速创建文档</p>
             </div>
+            <div style="margin-top: 40px;">
+              <el-form :model="docForm" label-width="80px">
+                <el-row>
+                  <el-form-item label="文档标题">
+                    <el-input v-model="docForm.title"></el-input>
+                  </el-form-item>
+                </el-row>
+                <el-form-item label="文档权限">
+                  <el-checkbox-group v-model="docForm.privilege">
+                    <el-checkbox label="可查看" name="type"></el-checkbox>
+                    <el-checkbox label="可评论" name="type"></el-checkbox>
+                    <el-checkbox label="可编辑" name="type"></el-checkbox>
+                    <el-checkbox label="可分享" name="type"></el-checkbox>
+                  </el-checkbox-group>
+                </el-form-item>
+                <div class="editor">
+                  <vue-ueditor-wrap v-model="docForm.doc" :config="ueConfig"></vue-ueditor-wrap>
+                </div>
 
-            <el-form-item class="button-row">
-              <el-button type="primary" @click="onSubmit" >提交</el-button>
-              <el-button style="margin-left: 40px">取消</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
+                <el-form-item class="button-row">
+                  <el-button type="primary" @click="onSubmit" >提交</el-button>
+                  <el-button style="margin-left: 30px">取消</el-button>
+                </el-form-item>
+              </el-form>
+            </div>
+          </div>
+        </el-card>
       </el-main>
     </el-container>
     <el-backtop right="80"></el-backtop>
@@ -153,7 +157,7 @@
             ]
           ],
           // 初始容器高度
-          initialFrameHeight: 500,
+          initialFrameHeight: 400,
           // 初始容器宽度
           initialFrameWidth: "100%",
           // 上传文件接口
@@ -167,8 +171,8 @@
 
 <style scoped>
   .main-body{
-    width: 70%;
-    margin-left: 15%;
+    width: 90%;
+    margin-left: 5%;
   }
   .top-title{
     float: left;
@@ -190,5 +194,9 @@
   }
   .editor{
     text-align: center;
+  }
+  .card{
+    width: 90%;
+    margin-left: 5%;
   }
 </style>
