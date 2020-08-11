@@ -1,7 +1,7 @@
 // 这是登录后导航栏组件，通过属性headSrc来更换头像
 <template>
   <div id="root" class="tabBar">
-    <router-link to="/" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
+    <router-link to="/welcome" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
 
     <ul class="nav">
       <li>
