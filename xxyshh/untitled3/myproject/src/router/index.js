@@ -86,7 +86,7 @@ const routes = [
     component: Change
   },
   {
-    path: '/welcome',
+    path: '/',
     name: 'welcome',
     component: Welcome
   },

@@ -10,9 +10,9 @@
           <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <p style="margin-top:5px; margin-left: 66px; height: 14px; font-size: 29px; color: #333333">个人空间
-                  <el-button style="float: right; font-size: 16px; padding: 15px"  type="text" @click="resetForm('ruleForm')">重置</el-button>
-                  <el-button style="float: right; font-size: 16px;padding: 15px"  type="text" @click="submitForm('ruleForm')">保存修改</el-button>
+                <p style="margin-top:5px; margin-left: 66px; height: 14px; font-size: 29px; color: #333333">  <strong>个人空间</strong>
+                  <el-button style="float: right; font-size: 16px; padding: 17px"  type="text" @click="resetForm('ruleForm')">重置</el-button>
+                  <el-button style="float: right; font-size: 16px;padding: 17px"  type="text" @click="submitForm('ruleForm')">保存修改</el-button>
                 </p>
               </div>
               <div style="margin-left: 20%; margin-top: 5%">
