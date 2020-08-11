@@ -15,6 +15,8 @@ import Created from "../workspace/Created";
 import Team from "../workspace/Team";
 import Recycle from "../workspace/Recycle";
 import Change from "../components/Change";
+import TeamView1 from "../workspace/teamview/TeamView1";
+import TeamView2 from "../workspace/teamview/TeamView2";
 import View from "../components/View";
 
 Vue.use(VueRouter)
