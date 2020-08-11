@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from "../components/Home";
-import App from "../App";
-import HelloWorld from "../components/HelloWorld";
 import Register1 from "../components/Register1";
 import Register2 from "../components/Register2";
 import Register3 from "../components/Register3";
@@ -15,23 +12,15 @@ import WorkSpace from "../workspace/WorkSpace";
 import Recently from "../workspace/Recently";
 import Favourite from "../workspace/Favourite";
 import Created from "../workspace/Created";
-import Team from "../workspace/Team";
+import Team from "../workspace/teamview/Team";
 import Recycle from "../workspace/Recycle";
 import Change from "../components/Change";
-import View from "../components/View";
+import TeamView1 from "../workspace/teamview/TeamView1";
+import TeamView2 from "../workspace/teamview/TeamView2";
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/hello',
-    name: '/hello',
-    component: HelloWorld
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
+const routes = [
   {
     path: '/register1',
     name: 'register1',
@@ -93,19 +82,31 @@ const routes = [{
     component: Recycle
   },
   {
-    path: '/detail/1',
+    path: '/detail/:id',
     name: 'change',
     component: Change
+  },
+  // {
+  //   path: '/team/:id',
+  //   name: 'teamview',
+  //   component: TeamView
+  // },
+  //用于测试创建者的团队界面
+  {
+    path: '/team/1',
+    name: 'teamview1',
+    component: TeamView1
+  },
+  //用于测试成员的团队界面
+  {
+    path: '/team/2',
+    name: 'teamview2',
+    component: TeamView2
   },
   {
     path: '/welcome',
     name: 'welcome',
     component: Welcome
-  },
-  {
-    path: '/view',
-    name: 'view',
-    component: View
   }
 ]
 const router = new VueRouter({

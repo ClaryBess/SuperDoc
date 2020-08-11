@@ -8,11 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '../static/iconfont.css'
 import SliderVerificationCode from 'slider-verification-code';
 import 'slider-verification-code/lib/slider-verification-code.css';
-import VueParticles from 'vue-particles';
 
 Vue.use(ElementUI);
 Vue.use(SliderVerificationCode);
-Vue.use(VueParticles)
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
