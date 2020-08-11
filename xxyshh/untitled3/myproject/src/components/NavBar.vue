@@ -20,7 +20,7 @@
       <ul class="rightNav">
         <li class="dropdown">
           <router-link to="HomePage">
-              <img :src='headSrc' class="userhead" />
+              <img :src=headSrc class="userhead" />
           </router-link>
         </li>
         <li>
@@ -38,9 +38,14 @@
 <script>
     export default {
         name: "NavBar",
+      props: {
+        headSrc: {
+          type: String,
+          default: "../assets/head.jpg"
+        }
+      },
       data() {
         return {
-          headSrc: require("../assets/head.jpg"),
           itemList: [{
             title: '我的工作台',
             subItemList: []
