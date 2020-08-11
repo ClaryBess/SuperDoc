@@ -1,7 +1,7 @@
 // 这是登录后导航栏组件，通过属性headSrc来更换头像
 <template>
   <div id="root" class="tabBar">
-    <router-link to="/" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
+    <router-link to="/welcome" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
 
     <ul class="nav">
       <li>
@@ -255,20 +255,21 @@
     height: 40px;
     display: inline-block;
     background-color: #ffffff;
-    color: #ea6f5a;
+    color: #50BFFF;
     font-size: 15px;
     line-height: 40px;
     text-align: center;
     border-radius: 20px;
     margin-left: 30px;
-    border-color: #ea6f5a;
+    border-color: #50BFFF;
     border-style: solid;
     border-width: thin;
   }
 
   .write:hover {
-    border-color: #e95338;
-    color: #e95338;
+    border-color: #409EFF;
+    color: #409EFF;
+    transition: color 0.7s;
   }
 
   .dropdown {
