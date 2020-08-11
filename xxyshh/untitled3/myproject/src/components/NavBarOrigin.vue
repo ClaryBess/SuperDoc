@@ -2,7 +2,7 @@
 <template>
   <div>
     <div id="root" class="tabBar">
-      <router-link to="/welcome" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
+      <router-link to="/" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
       <div class="right">
 
         <ul class="rightNav">

@@ -104,7 +104,7 @@ const routes = [
     component: TeamView2
   },
   {
-    path: '/welcome',
+    path: '/',
     name: 'welcome',
     component: Welcome
   }
