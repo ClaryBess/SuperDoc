@@ -77,6 +77,7 @@
           ]
         },
         percentage: 50,
+
       };
     },
     methods: {

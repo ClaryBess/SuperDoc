@@ -7,8 +7,9 @@
     <div id="color">
     <div class="main">
       <el-main>
+        <el-card class="box-card">
         <div  class="title">
-          <p>注册新账号</p>
+          <p style="margin-left: 50px">注册新账号</p>
         </div>
         <div class="step">
           <el-progress :percentage="percentage" :color="customColorMethod"></el-progress><br/><br/>
@@ -40,14 +41,15 @@
               <el-input placeholder="请输入2-10个字符" v-model="ruleForm.username"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')">
+              <el-button style="margin-left: 30px; margin-top: 30px" type="primary" @click="submitForm('ruleForm')">
                   完成
                 </el-button>
-              <el-button @click="resetForm('ruleForm')">重置</el-button>
+              <el-button style="margin-left: 60px; margin-top: 30px"  @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
           </el-form>
 
         </div>
+        </el-card>
       </el-main>
     </div>
     </div>
@@ -148,7 +150,7 @@
 
   .main{
     width: 70%;
-    margin: 0 auto;
+    margin: 2% auto;
   }
   .title{
     width: 100%;
