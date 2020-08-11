@@ -12,7 +12,7 @@ import WorkSpace from "../workspace/WorkSpace";
 import Recently from "../workspace/Recently";
 import Favourite from "../workspace/Favourite";
 import Created from "../workspace/Created";
-import Team from "../workspace/teamview/Team";
+import Team from "../workspace/Team";
 import Recycle from "../workspace/Recycle";
 import Change from "../components/Change";
 import TeamView1 from "../workspace/teamview/TeamView1";
@@ -83,26 +83,9 @@ const routes = [
     component: Recycle
   },
   {
-    path: '/detail/:id',
+    path: '/detail/1',
     name: 'change',
     component: Change
-  },
-  // {
-  //   path: '/team/:id',
-  //   name: 'teamview',
-  //   component: TeamView
-  // },
-  //用于测试创建者的团队界面
-  {
-    path: '/team/1',
-    name: 'teamview1',
-    component: TeamView1
-  },
-  //用于测试成员的团队界面
-  {
-    path: '/team/2',
-    name: 'teamview2',
-    component: TeamView2
   },
   {
     path: '/',

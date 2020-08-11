@@ -73,10 +73,11 @@ export default {
     font-size: 16px;
     position: relative;
     padding-left: 0;
-    padding-top: 4px;
+    padding-top: 10px;
+    padding-top: 10px;
     padding-right: 20px;
     overflow: hidden;
-    text-align: left;
+    text-align: center;
   }
 
   .docs-info p {
