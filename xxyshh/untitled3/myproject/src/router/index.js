@@ -18,6 +18,7 @@ import Created from "../workspace/Created";
 import Team from "../workspace/Team";
 import Recycle from "../workspace/Recycle";
 import Change from "../components/Change";
+import View from "../components/View";
 
 Vue.use(VueRouter)
 
@@ -100,6 +101,11 @@ const routes = [{
     path: '/welcome',
     name: 'welcome',
     component: Welcome
+  },
+  {
+    path: '/view',
+    name: 'view',
+    component: View
   }
 ]
 const router = new VueRouter({

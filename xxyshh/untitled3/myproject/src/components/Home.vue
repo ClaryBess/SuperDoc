@@ -2,8 +2,7 @@
     <el-container>
       <el-header>
         <div  v-if="hasLogin">
-          <NavBar :headSrc="headUrl">
-          </NavBar>
+          <NavBar></NavBar>
         </div>
         <div v-else>
           <NavBarOrigin>
@@ -35,7 +34,6 @@
       components: {NavBar, NavBarOrigin},
       data(){
         return{
-          headUrl: require('../assets/head.jpg'),
           hasLogin: true
         }
       }
