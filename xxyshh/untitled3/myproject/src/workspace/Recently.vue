@@ -6,7 +6,7 @@
       </div>
     </el-header>
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="200px" style="margin-left: 30px">
         <SideBar currentindex="1"></SideBar>
       </el-aside>
       <el-main>
