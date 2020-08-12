@@ -22,17 +22,17 @@ import View from "../components/View";
 Vue.use(VueRouter)
 
 const routes = [
-  {
+  { // 注册步骤1
     path: '/register1',
     name: 'register1',
     component: Register1
   },
-  {
+  {// 注册步骤2
     path: '/register2',
     name: 'register2',
     component: Register2
   },
-  {
+  {// 注册步骤3
     path: '/register3',
     name: 'register3',
     component: Register3
@@ -42,12 +42,12 @@ const routes = [
     name: 'edit',
     component: Edit
   },
-  {
+  { //个人空间
     path: '/homepage',
     name: 'homepage',
     component: Homepage
   },
-  {
+  { //修改个人空间
     path: '/homepageedit',
     name: 'homepageedit',
     component: HomepageEdit
@@ -104,7 +104,7 @@ const routes = [
     name: 'teamview2',
     component: TeamView2
   },
-  {
+  { // 首页
     path: '/',
     name: 'welcome',
     component: Welcome

@@ -14,6 +14,11 @@
         <!-- <doc-list :docs="createdDocs"></doc-list> -->
         <doc-list :docs="Docs"></doc-list>
       </el-main>
+
+      <div class="rightBar">
+        <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 2px">新建文档<i class="el-icon-upload el-icon--right"></i></el-button>
+        <el-button size="small" type="primary">模板库<i class="el-icon-upload el-icon--right"></i></el-button>
+      </div>
     </el-container>
   </el-container>
 </template>
@@ -51,5 +56,11 @@ export default {
 <style>
   .h2color {
     color: #7093FF;
+  }
+  .rightBar{
+    width: 150px;
+    float: right;
+    margin-right: 80px;
+    margin-top: 60px;
   }
 </style>

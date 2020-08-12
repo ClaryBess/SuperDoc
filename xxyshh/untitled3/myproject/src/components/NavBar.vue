@@ -5,7 +5,7 @@
 
     <ul class="nav">
       <li>
-        <router-link to="/workspace">工作台</router-link>
+        <router-link to="/recently">工作台</router-link>
       </li>
       <li>
         <a href="#">消息</a>
