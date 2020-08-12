@@ -87,7 +87,7 @@
     data(){
       return{
         headUrl: require('../assets/head.jpg'),
-        hasLogin: true,
+        hasLogin: false,
         imgSrc:require('../assets/bg2.jpg'),
         activeName: '1'
       }

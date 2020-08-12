@@ -24,8 +24,8 @@
           </router-link>
         </li>
         <li>
-          <div class="write">
-            退出
+          <div >
+            <router-link to="/" > <el-button round >退出</el-button></router-link>
           </div>
         </li>
       </ul>
