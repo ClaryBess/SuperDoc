@@ -6,10 +6,10 @@
       </div>
     </el-header>
     <el-container>
-      <el-aside width="200px" style="margin-left: 30px">
+      <el-aside width="15%">
       <SideBar  currentindex='5'></SideBar>
       </el-aside>
-      <el-main>
+      <el-main style="width: 80%">
         <h2 class="h2color">回收站</h2>
         <!-- <doc-list :docs="recycleDocs"></doc-list> -->
         <doc-list :docs="Docs"></doc-list>
@@ -56,7 +56,7 @@ export default {
     color: #7093FF;
   }
   .rightBar{
-    width: 150px;
+    width: 5%;
     float: right;
     margin-right: 80px;
     margin-top: 60px;

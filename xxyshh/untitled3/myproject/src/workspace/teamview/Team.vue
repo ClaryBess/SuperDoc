@@ -6,10 +6,10 @@
       </div>
     </el-header>
     <el-container>
-      <el-aside width="200px" style="margin-left: 30px">
+      <el-aside width="15%">
         <SideBar currentindex="4"></SideBar>
       </el-aside>
-      <el-main>
+      <el-main style="width: 80%">
         <h2 class="h2color">加入的团队</h2>
         <!-- <teams-list :teams="joinedteams"></teams-list> -->
         <teams-list :teams="teams"></teams-list>
@@ -53,7 +53,7 @@ export default {
   color: #7093ff;
 }
 .rightBar{
-  width: 150px;
+  width: 5%;
   float: right;
   margin-right: 80px;
   margin-top: 60px;

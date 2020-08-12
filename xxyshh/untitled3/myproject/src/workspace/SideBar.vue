@@ -1,6 +1,6 @@
 <template>
   <div id="SideBar">
-    <el-row class="tac">
+    <el-row class="tac" style="margin-left: 30px">
       <el-col>
         <h3>个人工作台</h3>
         <el-menu :default-active="currentindex" class="el-menu-vertical-demo">
