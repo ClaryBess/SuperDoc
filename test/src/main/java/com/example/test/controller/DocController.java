@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 public class DocController {
 
@@ -15,7 +14,7 @@ public class DocController {
     DocumentMapper documentMapper;
 
     @GetMapping("/doc/{DocID}")
-    public Document getDocument(@PathVariable("DocID") Integer DocID){
+    public Document getDoc(@PathVariable("DocID") Integer DocID){
         return documentMapper.getDocById(DocID);
     }
 
@@ -24,4 +23,5 @@ public class DocController {
         documentMapper.insertDoc(document);
         return document;
     }
+
 }

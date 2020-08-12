@@ -58,6 +58,7 @@ export default {
     position: relative;
     border-radius: 20px;
     background-color: #f4f7f8;
+    padding: 1px;
   }
 
   .docimg {

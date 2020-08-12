@@ -20,6 +20,7 @@ import TeamView2 from "../workspace/teamview/TeamView2";
 import View from "../components/View";
 
 import ManageMember from "../workspace/teamview/ManageMember";
+import TeamDoc from "../workspace/teamview/TeamDoc";
 
 import TemLib from "../workspace/temLib/TemLib";
 
@@ -113,12 +114,7 @@ const routes = [
     name: 'welcome',
     component: Welcome
   },
-  {
-    path: '/view',
-    name: 'view',
-    component: View
-  },
-  //管理成员
+  // 团队信息
   {
     path: '/team/manageMember',
     name: 'manageMember',
@@ -130,10 +126,21 @@ const routes = [
     name: 'temlib',
     component: TemLib
   },
+  // 团队文档
+  {
+    path: '/team/teamdoc',
+    name: 'teamdoc',
+    component: TeamDoc
+  },
+  {
+    path: '/change',
+    name: 'change',
+    component: Change
+  }
 ]
 const router = new VueRouter({
   routes,
   mode: 'history'
-})
+});
 
 export default router

@@ -78,7 +78,7 @@ export default {
     padding-top: 10px;
     padding-right: 20px;
     overflow: hidden;
-    text-align: center;
+    text-align: left;
   }
 
   .docs-info p {

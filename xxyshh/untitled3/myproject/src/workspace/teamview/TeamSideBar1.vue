@@ -2,18 +2,24 @@
   <div id="TeamSideBar1" style="margin-left: 30px">
     <el-row class="tac">
       <el-col>
-        <h3>创建者</h3>
+        <div style="font-size: 14px;margin-top: 25px;margin-bottom: 30px">
+        <span style="font-size: 19px"><strong>团队界面</strong></span>
+        <el-divider direction="vertical"></el-divider>
+        <span>创建者</span>
+        </div>
         <el-menu :default-active="currentindex" class="el-menu-vertical-demo">
           <el-menu-item index="1" @click="itemClick1">
-            <span slot="title">管理成员</span>
+            <span slot="title">团队信息</span>
           </el-menu-item>
           <el-menu-item index="2" @click="itemClick2">
-            <span slot="title">解散团队</span>
+            <span slot="title">团队文档</span>
           </el-menu-item>
-          <el-menu-item index="3" @click="itemClick3">
+          <el-menu-item index="4" @click="itemClick4">
             <span slot="title">设置文档权限</span>
           </el-menu-item>
+
         </el-menu>
+
       </el-col>
     </el-row>
   </div>
@@ -34,13 +40,14 @@ export default {
   },
   methods: {
     itemClick1() {
-      this.$router.push("manageMember")
-      console.log("管理成员")
+      this.$router.push("1")
+      console.log("团队信息")
     },
     itemClick2() {
-      console.log("解散团队")
+      this.$router.push("teamdoc")
+      console.log("团队文档")
     },
-    itemClick3() {
+    itemClick4() {
       console.log("设置文档权限")
     },
   },
