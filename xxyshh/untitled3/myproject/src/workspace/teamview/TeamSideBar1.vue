@@ -1,5 +1,5 @@
 <template>
-  <div id="TeamSideBar1">
+  <div id="TeamSideBar1" style="margin-left: 30px">
     <el-row class="tac">
       <el-col>
         <h3>创建者</h3>

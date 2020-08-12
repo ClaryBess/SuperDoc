@@ -6,10 +6,12 @@
       </div>
     </el-header>
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="15%">
       <SideBar></SideBar>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main style="width: 80%">
+        <h2 class="h2color">个人工作台</h2>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -30,4 +32,7 @@ export default {
 </script>
 
 <style>
+  .h2color {
+    color: #7093FF;
+  }
 </style>

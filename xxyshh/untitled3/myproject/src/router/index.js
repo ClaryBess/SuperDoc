@@ -21,6 +21,8 @@ import View from "../components/View";
 
 import ManageMember from "../workspace/teamview/ManageMember";
 
+import TemLib from "../workspace/temLib/TemLib";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -121,6 +123,12 @@ const routes = [
     path: '/team/manageMember',
     name: 'manageMember',
     component: ManageMember
+  },
+  //模板库页面
+  {
+    path: '/temlib',
+    name: 'temlib',
+    component: TemLib
   },
 ]
 const router = new VueRouter({

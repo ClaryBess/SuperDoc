@@ -74,10 +74,11 @@
     height: 56px;
     width: 100%;
     border-bottom-color: #f2f2f2;
-    border-bottom-style: solid;
     background-color: #ffffff;
-    border-bottom-width: 1px;
+    border-bottom-style: inset;
     display: flex;
+    z-index: 9999;
+    position: fixed;
   }
 
   .logo {
@@ -123,6 +124,7 @@
     border: #eeeeee solid 1px;
     background-color: #ffffff;
     box-shadow: 0 2px 2px #eeeeee;
+
   }
 
   .subNav li:first-child {

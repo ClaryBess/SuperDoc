@@ -1,5 +1,5 @@
 <template>
-  <div id="TeamSideBar2">
+  <div id="TeamSideBar2" style="margin-left: 30px">
     <el-row class="tac">
       <el-col>
         <h3>成员</h3>
