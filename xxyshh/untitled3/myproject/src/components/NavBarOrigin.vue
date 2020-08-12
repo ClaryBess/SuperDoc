@@ -83,7 +83,6 @@
     background-color: #ffffff;
     display: flex;
     z-index: 9999;
-    position: fixed;
   }
 
   .logo {

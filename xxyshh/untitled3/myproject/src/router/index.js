@@ -122,6 +122,11 @@ const routes = [
     name: 'manageMember',
     component: ManageMember
   },
+  {
+    path: '/change',
+    name: 'change',
+    component: Change
+  }
 ]
 const router = new VueRouter({
   routes,

@@ -78,7 +78,6 @@
     border-bottom-style: inset;
     display: flex;
     z-index: 9999;
-    position: fixed;
   }
 
   .logo {
