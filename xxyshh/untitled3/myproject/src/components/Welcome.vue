@@ -74,7 +74,7 @@
     <div class="background" >
       <img :src="imgSrc" width="100%" height="100%" alt="" />
     </div>
-    <el-backtop ><div style="color: #154a74">UP</div></el-backtop>
+    <el-backtop ></el-backtop>
   </el-container>
 </template>
 
@@ -87,7 +87,7 @@
     data(){
       return{
         headUrl: require('../assets/head.jpg'),
-        hasLogin: true,
+        hasLogin: false,
         imgSrc:require('../assets/bg2.jpg'),
         activeName: '1'
       }
