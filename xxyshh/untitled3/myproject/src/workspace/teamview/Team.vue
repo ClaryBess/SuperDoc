@@ -14,10 +14,7 @@
         <!-- <teams-list :teams="joinedteams"></teams-list> -->
         <teams-list :teams="teams"></teams-list>
       </el-main>
-      <div class="rightBar">
-        <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 2px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
-        <el-button size="small" type="primary">模板库<i class="el-icon-link el-icon--right"></i></el-button>
-      </div>
+      <right-bar></right-bar>
     </el-container>
   </el-container>
 </template>
@@ -26,10 +23,11 @@
 import NavBar from "@/components/NavBar";
 import SideBar from "../SideBar";
 import TeamsList from "./TeamsList";
+import RightBar from "../RightBar";
 
 export default {
   name: "Team",
-  components: { NavBar, SideBar, TeamsList },
+  components: { NavBar, SideBar, TeamsList,RightBar },
   data() {
     return {
       headUrl: require("@/assets/head.jpg"),
@@ -51,11 +49,5 @@ export default {
 <style>
 .h2color {
   color: #7093ff;
-}
-.rightBar{
-  width: 5%;
-  float: right;
-  margin-right: 80px;
-  margin-top: 60px;
 }
 </style>

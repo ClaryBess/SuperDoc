@@ -113,7 +113,7 @@
             <el-card shadow="hover" style="margin-top: 20px; margin-bottom: 20px">
               <div slot="header">
                 编辑记录
-                <i class="iconfont iconsuggest"@click="EditDoc" style="float: right;color:#409EFF ">编辑文档</i>
+                <i class="iconfont iconsuggest" @click="EditDoc" style="float: right;color:#409EFF ">编辑文档</i>
               </div>
               <el-timeline reverse="true">
                 <el-timeline-item
