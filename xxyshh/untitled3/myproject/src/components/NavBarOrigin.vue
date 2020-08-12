@@ -38,7 +38,7 @@
       </div>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button type="primary" @click="loginForm('ruleForm')">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -65,6 +65,25 @@
       },
       inputBlur: function() {
         this.search = 'search'
+      },
+      loginForm(formName){
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.loading = true
+            this.post('login', this.loginForm).then(retDate => {
+              if (retDate.ok) {
+                this.store.dispatch('setUser', retDate)
+                this.$router.push('NavBar')
+              } else {
+                this.showMessage(retDate.message)
+                this.loading = false
+              }
+            })
+          } else {
+            console.log('error submit!!')
+            return false
+          }
+        })
       },
     }
   }

@@ -128,12 +128,21 @@
         submitForm(formName) {
           this.$refs[formName].validate((valid) => {
             if (valid) {
-              this.$router.push('Register2')
-            } else {
+              this.post("/register",this.submitForm()).then(retDate => {
+                if (retDate.ok) {
+                  this.store.dispatch('setUser', retDate)
+                  // 注册成功跳转到首页
+                  this.$message.success(retDate.message)
+                  this.$router.push('NavBar')
+                } else {
+                  this.showMessage(retDate.message)
+                }
+              })
+            }else {
               console.log('error submit!!');
               return false;
             }
-          });
+          })
         },
         resetForm(formName) {
           this.$refs[formName].resetFields();
