@@ -78,10 +78,7 @@
     border-bottom-width: 2px;
     border-bottom-style: inset;
     display: flex;
-<<<<<<< HEAD
     z-index: 9999;
-=======
->>>>>>> 0dfb0ef282ad37b41af7702abe61934010cc5299
   }
 
   .logo {
