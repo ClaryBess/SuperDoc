@@ -34,7 +34,7 @@ export default {
   props: {
     currentindex: {
       type: String,
-      default: 1,
+      default: '1',
     },
   },
   methods: {

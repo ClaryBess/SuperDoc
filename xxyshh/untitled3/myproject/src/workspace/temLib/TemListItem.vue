@@ -1,89 +1,65 @@
 <template>
- <div class="docs" >
-      <div class="docs-item">
-        <!-- 文档预览图 -->
-        <img class="docimg" :src="TemItem.url" @click="itemClick">
-        <div class="docs-info" @click="itemClick">
+  <div class="goods-item" @click="itemClick">
+    <el-card class="box-card" shadow="always">
+        <!-- <img :src="TemItem.img" alt=""> -->
+        <img src="@/assets/预览图1.png" alt />
+        <div class="goods-info">
           <p>{{TemItem.title}}</p>
         </div>
-        <img class="img" :src="collectedurl" alt="" @click="collectTem">
-      </div>
+    </el-card>
   </div>
 </template>
 
 <script>
-import img1 from "@/assets/收藏.svg";
-import img2 from "@/assets/收藏 (1).svg";
-
 export default {
   name: "TemListItem",
   data() {
-    return{
-      collectedurl: img1
-    }
+    return {};
   },
   props: {
-      TemItem: {
-        type: Object,
-        default() {
-          return {}
-        }
-      }
-    },
-  methods: {
-      //点击进入模板预览界面
-      itemClick() {
-        this.$router.push('/detail/' + this.docsItem.id)
+    TemItem: {
+      type: Object,
+      default() {
+        return {};
       },
-      collectDoc() {
-        if(this.collectedurl == img1){
-          this.collectedurl = img2
-        }
-        else if(this.collectedurl == img2){
-          this.collectedurl = img1
-        }
-      }
-    }
+    },
+  },
+  methods: {
+    //点击进入模板预览界面
+    itemClick() {
+      this.$router.push("/detail/" + this.TemItem.id);
+    },
+  },
 };
 </script>
 
 <style>
-  .docs {
-    position: relative;
-    padding: 5px;
-  }
-  .docs-item {
-    display: flex;
-    position: relative;
-    border-radius: 20px;
-    padding: 1px;
-    background-color: #f4f7f8;
-  }
+.goods-item {
+  padding: 10px;
+  position: relative;
+  width: 30%;
+}
 
-  .docimg {
-    width: 50px;
-    padding: 10px;
-  }
+.goods-item img {
+  width: 265px;
+  border-radius: 5px;
+  padding: 5px;
+}
 
-  .img {
-    width: 20px;
-    padding-right: 10px;
-  }
+.goods-info {
+  font-size: 18px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  text-align: center;
+}
 
-  .docs-info {
-    font-size: 16px;
-    position: relative;
-    padding-left: 0;
-    padding-top: 10px;
-    padding-top: 10px;
-    padding-right: 20px;
-    overflow: hidden;
-    text-align: left;
-  }
-
-  .docs-info p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-bottom: 3px;
-  }
+.goods-info p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+</style>

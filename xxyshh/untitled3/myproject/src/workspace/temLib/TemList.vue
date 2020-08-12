@@ -1,7 +1,7 @@
 <template>
   <div class="docs">
-    <doc-list-item v-for="item in tems" :tems-item="item" :key="item.id">
-    </doc-list-item>
+    <tem-list-item v-for="item in tems" :tem-item="item" :key="item.id">
+    </tem-list-item>
   </div>
 </template>
 

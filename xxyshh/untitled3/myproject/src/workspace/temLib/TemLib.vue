@@ -11,7 +11,7 @@
       </el-aside>
       <el-main>
         <h2>模板库</h2>
-        <tem-list :tems = 'temsList'></tem-list>
+        <tem-list :tems='temsList'></tem-list>
       </el-main>
     </el-container>
   </el-container>
@@ -31,9 +31,24 @@ export default {
       temsList: [
         {
           id: '1',
-          title: '1111',
-          url: '@/assets/预览图1.png'
-        }
+          title: '1111'
+        },
+        {
+          id: '2',
+          title: '第二张图片'
+        },
+        {
+          id: '3',
+          title: '3333'
+        },
+        {
+          id: '4',
+          title: 'sisisisi'
+        },
+        {
+          id: '5',
+          title: 'eeee'
+        },
       ]
     };
   },
