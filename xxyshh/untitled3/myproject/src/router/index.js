@@ -22,7 +22,7 @@ import View from "../components/View";
 import ManageMember from "../workspace/teamview/ManageMember";
 import TeamDoc from "../workspace/teamview/TeamDoc";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   { // 注册步骤1
@@ -129,10 +129,14 @@ const routes = [
     name: 'teamdoc',
     component: TeamDoc
   },
-]
-const router = new VueRouter({
+  {
+    path: '/change',
+    name: 'change',
+    component: Change
+  }]
+  const router = new VueRouter({
   routes,
   mode: 'history'
-})
+});
 
 export default router

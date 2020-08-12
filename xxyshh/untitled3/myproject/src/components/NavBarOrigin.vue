@@ -83,6 +83,7 @@
     background-color: #ffffff;
     border-bottom-width: 2px;
     display: flex;
+    z-index: 9999;
   }
 
   .logo {
