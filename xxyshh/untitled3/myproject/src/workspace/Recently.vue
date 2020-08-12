@@ -11,6 +11,10 @@
       </el-aside>
       <el-main>
         <h2 class="h2color">最近浏览的文档</h2>
+        <el-row>
+          <el-button type="primary">主要按钮</el-button>
+          <el-button type="success">成功按钮</el-button>
+        </el-row>
         <!-- <doc-list :docs="showDocs"></doc-list> -->
         <doc-list :docs="Docs"></doc-list>
       </el-main>
@@ -31,29 +35,29 @@ export default {
       headUrl: require("../assets/head.jpg"),
       Docs: [
         {
-          id: '1',
+          id: "1",
           title: "第111",
         },
         {
-          id: '2',
+          id: "2",
           title: "第二个hhhhh文档",
         },
         {
-          id: '3',
+          id: "3",
           title: "第三个文dashdkjlashdjkl档",
         },
         {
-          id: '4',
+          id: "4",
           title: "四",
         },
         {
-          id: '5',
+          id: "5",
           title: "第五wwuwuwuwu个文档",
         },
         {
-          id: '6',
+          id: "6",
           title: "第六",
-        }
+        },
       ],
     };
   },
@@ -66,7 +70,7 @@ export default {
 </script>
 
 <style>
-  .h2color {
-    color: #7093FF;
-  }
+.h2color {
+  color: #7093ff;
+}
 </style>

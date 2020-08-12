@@ -8,7 +8,7 @@
     </el-header>
     <el-container>
       <el-aside width="200px">
-      <team-side-bar1></team-side-bar1>
+        <team-side-bar1></team-side-bar1>
       </el-aside>
       <el-main>
         <h2>团队界面1</h2>
@@ -31,7 +31,7 @@ import DocList from "../DocList";
 
 export default {
   name: "TeamView1",
-  components: { NavBar, TeamSideBar1,DocList },
+  components: { NavBar, TeamSideBar1, DocList },
   data() {
     return {
       headUrl: require("@/assets/head.jpg"),
@@ -39,30 +39,30 @@ export default {
       id: null,
       Docs: [
         {
-          id: '1',
+          id: "1",
           title: "第111",
         },
         {
-          id: '2',
+          id: "2",
           title: "第二个hhhhh文档",
         },
         {
-          id: '3',
+          id: "3",
           title: "第三个文dashdkjlashdjkl档",
         },
         {
-          id: '4',
+          id: "4",
           title: "四",
         },
         {
-          id: '5',
+          id: "5",
           title: "第五wwuwuwuwu个文档",
         },
         {
-          id: '6',
+          id: "6",
           title: "第六",
-        }
-      ]
+        },
+      ],
     };
   },
   created() {
@@ -73,4 +73,7 @@ export default {
 </script>
 
 <style>
+.h2color {
+  color: #7093ff;
+}
 </style>
