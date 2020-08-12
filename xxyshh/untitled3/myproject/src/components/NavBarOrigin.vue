@@ -81,9 +81,8 @@
     border-bottom-color: #f2f2f2;
     border-bottom-style: solid;
     background-color: #ffffff;
+    border-bottom-width: 2px;
     display: flex;
-    z-index: 9999;
-    position: fixed;
   }
 
   .logo {

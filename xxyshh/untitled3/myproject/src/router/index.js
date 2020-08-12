@@ -20,6 +20,7 @@ import TeamView2 from "../workspace/teamview/TeamView2";
 import View from "../components/View";
 
 import ManageMember from "../workspace/teamview/ManageMember";
+import TeamDoc from "../workspace/teamview/TeamDoc";
 
 Vue.use(VueRouter)
 
@@ -116,11 +117,17 @@ const routes = [
     name: 'view',
     component: View
   },
-  //管理成员
+  // 团队信息
   {
     path: '/team/manageMember',
     name: 'manageMember',
     component: ManageMember
+  },
+  // 团队文档
+  {
+    path: '/team/teamdoc',
+    name: 'teamdoc',
+    component: TeamDoc
   },
 ]
 const router = new VueRouter({

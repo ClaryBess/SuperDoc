@@ -75,10 +75,9 @@
     width: 100%;
     border-bottom-color: #f2f2f2;
     background-color: #ffffff;
+    border-bottom-width: 2px;
     border-bottom-style: inset;
     display: flex;
-    z-index: 9999;
-    position: fixed;
   }
 
   .logo {
