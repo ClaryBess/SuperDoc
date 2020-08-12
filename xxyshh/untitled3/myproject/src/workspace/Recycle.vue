@@ -14,10 +14,9 @@
         <!-- <doc-list :docs="recycleDocs"></doc-list> -->
         <doc-list :docs="Docs"></doc-list>
       </el-main>
-
       <div class="rightBar">
-        <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 2px">新建文档<i class="el-icon-upload el-icon--right"></i></el-button>
-        <el-button size="small" type="primary">模板库<i class="el-icon-upload el-icon--right"></i></el-button>
+        <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 2px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
+        <el-button size="small" type="primary">模板库<i class="el-icon-link el-icon--right"></i></el-button>
       </div>
     </el-container>
   </el-container>
