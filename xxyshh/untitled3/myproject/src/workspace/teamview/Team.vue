@@ -7,7 +7,11 @@
     </el-header>
     <el-container>
       <el-aside width="200px">
-        <SideBar currentindex="4"></SideBar>
+        <SideBar currentindex="4"></SideBar>       
+        <div class="rightBar">
+        <el-button size="small" type="primary" style="margin-bottom: 18px;margin-left: 2px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
+        <el-button size="small" type="primary">模板库<i class="el-icon-link el-icon--right"></i></el-button>
+        </div>
       </el-aside>
       <el-main>
         <h2 class="h2color">加入的团队</h2>
@@ -15,7 +19,7 @@
         <teams-list :teams="teams"></teams-list>
       </el-main>
       <div class="rightBar">
-        <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 2px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
+        <el-button size="small" type="primary" style="margin-bottom: 18px;margin-left: 2px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
         <el-button size="small" type="primary">模板库<i class="el-icon-link el-icon--right"></i></el-button>
       </div>
     </el-container>
@@ -54,8 +58,10 @@ export default {
 }
 .rightBar{
   width: 150px;
-  float: right;
-  margin-right: 80px;
+  /* float: right; */
+  position: relative;
+  /* margin-left: 0%; */
+  margin-right: 0px;
   margin-top: 60px;
 }
 </style>
