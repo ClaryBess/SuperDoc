@@ -54,6 +54,8 @@ export default {
     display: flex;
     position: relative;
     border-radius: 20px;
+    margin-right: 48px;
+    margin-bottom: 22px;
     padding: 1px;
     background-color: #f4f7f8;
   }
@@ -61,20 +63,21 @@ export default {
   .docimg {
     width: 50px;
     padding: 10px;
+    border-radius: 25px;
   }
 
   .img {
     width: 20px;
-    padding-right: 10px;
+    padding-right: 14px;
   }
 
   .docs-info {
     font-size: 16px;
     position: relative;
-    padding-left: 0;
+    padding-left: 8px;
     padding-top: 10px;
     padding-top: 10px;
-    padding-right: 20px;
+    padding-right: 11px;
     overflow: hidden;
     text-align: center;
   }

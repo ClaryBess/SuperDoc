@@ -11,7 +11,7 @@
         <team-side-bar1></team-side-bar1>
       </el-aside>
       <el-main style="width: 80%">
-        <el-card class="box-card"  shadow="hover">
+        <el-card class="box-card"  shadow="always">
           <div slot="header" class="clearfix">
             <span style="font-size: 17px"><strong>团队简介</strong></span>
           </div>
@@ -20,22 +20,22 @@
           </div>
         </el-card>
         <div style="width: 880px">
-          <el-card style="width: 330px;float:left" class="box-card"  shadow="hover">
+          <el-card style="width: 260px; height: 180px" class="box-card"  shadow="always">
           <div slot="header" class="clearfix">
             <span style="font-size: 17px"><strong>创建者</strong></span>
           </div>
-          <div  class="man-item">
+          <div  class="leader-item">
             <!-- :member=传入的团队成员 -->
             <!-- <member-list :members="teamMembers"></member-list> -->
             <member-list :members="teamMembers.id=1"></member-list>
             <h2>{{id}}</h2>
           </div>
         </el-card>
-        <el-card style="width: 440px;float: right" class="box-card"  shadow="hover">
+        <el-card class="box-card"  shadow="always">
           <div slot="header" class="clearfix">
             <span style="font-size: 17px"><strong>成员</strong></span>
           </div>
-          <div  class="man-item">
+          <div  class="member-item">
             <!-- :member=传入的团队成员 -->
             <!-- <member-list :members="teamMembers"></member-list> -->
             <member-list :members="teamMembers"></member-list>
@@ -155,8 +155,13 @@ export default {
   .item {
     margin: 15px 13px;
   }
-  .man-item {
-    margin: 2px 15%;
+  .leader-item {
+    margin-left: 18px;
+    margin-bottom: 1px;
+  }
+  .member-item {
+    margin-left: 18px;
+    margin-bottom: 1px;
   }
   .clearfix:before,
   .clearfix:after {
@@ -169,7 +174,8 @@ export default {
   .box-card {
     margin-top: 50px;
     margin-left: 50px;
-    width: 830px;
+    margin-bottom: 10px;
+    width: 880px;
   }
 .rightBar{
   width: 5%;
