@@ -18,6 +18,7 @@ public interface DocumentMapper {
     @Delete("delete from Document where DocID=#{DocID}")
     public int deleteDocById(Integer DocID);
 
+    @Options(useGeneratedKeys = true,keyProperty = "DocID")
     @Insert("insert into Document(UserID,Title,Content,Privilege,IsTeam,Team,RecycleDateTime) values(#{UserID},#{Title},#{Content},#{Privilege},#{IsTeam},#{Team},#{RecycleDateTime})")
     public int insertDoc(Document document);
 
@@ -29,5 +30,14 @@ public interface DocumentMapper {
 
     @Update("update Document set RecycleDateTime=#{RecycleDateTime},IsRecycle=#{IsRecycle} where DocID=#{DocID}")
     public int updateRec(Document document);
+
+    @Update("update Document set IsTeam=#{IsTeam},Team=#{Team} where DocID=#{DocID}")
+    public int updateTea(Document document);
+
+    @Update("update Document set Comment=Comment+1 where DocID=#{DocID}")
+    public int commentDoc(Document document);
+
+    @Update("update Collect set Collect=Collect+1 where DocID=#{DocID}")
+    public int collectDoc(Document document);
 
 }
