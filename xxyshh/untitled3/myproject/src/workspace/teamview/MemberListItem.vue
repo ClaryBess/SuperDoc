@@ -54,7 +54,8 @@ export default {
     display: flex;
     position: relative;
     border-radius: 20px;
-    background-color: #f4f7ff;
+    padding: 1px;
+    background-color: #f4f7f8;
   }
 
   .docimg {

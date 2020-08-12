@@ -11,16 +11,38 @@
         <team-side-bar1></team-side-bar1>
       </el-aside>
       <el-main style="width: 80%">
-        <h2>团队界面1</h2>
-        <h2>团队创建者</h2>
-        <h2>团队成员</h2>
-        <h2>团队信息</h2>
-
-        <h2 class="h2color">管理成员</h2>
-        <!-- :member=传入的团队成员 -->
-        <!-- <member-list :members="teamMembers"></member-list> -->
-        <member-list :members="teamMembers"></member-list>
-        <h2>{{id}}</h2>
+        <el-card class="box-card"  shadow="hover">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 17px"><strong>团队简介</strong></span>
+          </div>
+          <div  class="text item">
+            我们是非常专业的团队。美羊羊走中路的话输出不够，线上游走也来不及赶快，还是选欧阳修好，但是比起欧阳娜娜又有些许不足，要不还是选欧阳靖吧至少经济能压上还可以为羊村发展尽尽力
+          </div>
+        </el-card>
+        <div style="width: 880px">
+          <el-card style="width: 330px;float:left" class="box-card"  shadow="hover">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 17px"><strong>创建者</strong></span>
+          </div>
+          <div  class="man-item">
+            <!-- :member=传入的团队成员 -->
+            <!-- <member-list :members="teamMembers"></member-list> -->
+            <member-list :members="teamMembers.id=1"></member-list>
+            <h2>{{id}}</h2>
+          </div>
+        </el-card>
+        <el-card style="width: 440px;float: right" class="box-card"  shadow="hover">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 17px"><strong>成员</strong></span>
+          </div>
+          <div  class="man-item">
+            <!-- :member=传入的团队成员 -->
+            <!-- <member-list :members="teamMembers"></member-list> -->
+            <member-list :members="teamMembers"></member-list>
+            <h2>{{id}}</h2>
+          </div>
+        </el-card>
+        </div>
       </el-main>
       <div class="rightBar">
         <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 4px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
@@ -28,6 +50,8 @@
         <el-button size="small" type="primary" style="margin-bottom: 18px;margin-left: 4px" @click="open">解散团队<i class="el-icon-link el-icon--right"></i></el-button>
       </div>
     </el-container>
+
+    <el-backtop right="80"></el-backtop>
   </el-container>
 </template>
 
@@ -81,7 +105,19 @@ export default {
         },
         {
           id: "3",
-          name: "wsy",
+          name: "wsyshhshhshh",
+        },
+        {
+          id: "4",
+          name: "zbn",
+        },
+        {
+          id: "5",
+          name: "lzy",
+        },
+        {
+          id: "6",
+          name: "wzz",
         }
       ]
     };
@@ -113,9 +149,28 @@ export default {
 </script>
 
 <style>
-.h2color {
-  color: #7093ff;
-}
+  .text {
+    font-size: 14px;
+  }
+  .item {
+    margin: 15px 13px;
+  }
+  .man-item {
+    margin: 2px 15%;
+  }
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+  .box-card {
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 830px;
+  }
 .rightBar{
   width: 5%;
   float: right;
