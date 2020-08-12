@@ -130,7 +130,7 @@
           console.log('go back');
         },
         EditDoc() {
-          this.$router.push("change");
+          this.$router.push("/change");
         },
         initHeight(){
           //兼容性，获取页面滚动距离

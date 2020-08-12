@@ -112,11 +112,6 @@ const routes = [
     name: 'welcome',
     component: Welcome
   },
-  {
-    path: '/view',
-    name: 'view',
-    component: View
-  },
   // 团队信息
   {
     path: '/team/manageMember',
