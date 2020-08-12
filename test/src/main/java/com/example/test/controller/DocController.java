@@ -24,4 +24,39 @@ public class DocController {
         return document;
     }
 
+    @GetMapping("/doc/update/c")
+    public Document updateCon(Document document){
+        documentMapper.updateCon(document);
+        return document;
+    }
+
+    @GetMapping("/doc/update/p")
+    public Document updatePri(Document document){
+        documentMapper.updatePri(document);
+        return document;
+    }
+
+    @GetMapping("/doc/update/r")
+    public Document updateRec(Document document){
+        documentMapper.updateRec(document);
+        return document;
+    }
+
+    @GetMapping("/doc/update/t")
+    public Document updateTea(Document document){
+        documentMapper.updateTea(document);
+        return document;
+    }
+
+    @GetMapping("/doc/comment/{DocID}")
+    public Document comment(@PathVariable("DocID") Integer DocID){
+        documentMapper.commentDoc(DocID);
+        return documentMapper.getDocById(DocID);
+    }
+
+    @GetMapping("/doc/collect/{DocID}")
+    public Document collect(@PathVariable("DocID") Integer DocID){
+        documentMapper.collectDoc(DocID);
+        return documentMapper.getDocById(DocID);
+    }
 }

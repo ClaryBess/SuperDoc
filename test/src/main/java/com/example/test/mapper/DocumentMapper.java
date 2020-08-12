@@ -34,10 +34,10 @@ public interface DocumentMapper {
     @Update("update Document set IsTeam=#{IsTeam},Team=#{Team} where DocID=#{DocID}")
     public int updateTea(Document document);
 
-    @Update("update Document set Comment=Comment+1 where DocID=#{DocID}")
-    public int commentDoc(Document document);
+    @Update("update Document set CommentNumber=CommentNumber+1 where DocID=#{DocID}")
+    public int commentDoc(Integer DocID);
 
-    @Update("update Collect set Collect=Collect+1 where DocID=#{DocID}")
-    public int collectDoc(Document document);
+    @Update("update Document set CollectNumber=CollectNumber+1 where DocID=#{DocID}")
+    public int collectDoc(Integer DocID);
 
 }

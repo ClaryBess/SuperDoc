@@ -25,4 +25,10 @@ public class BrowseController {
         browseMapper.insertBrowse(browse);
         return browse;
     }
+
+    @GetMapping("/browse/update/{BrowseID}")
+    public Browse updateDateTime(@PathVariable("BrowseID") Integer BrowseID){
+        browseMapper.updateDateTime(BrowseID);
+        return browseMapper.getBrowseById(BrowseID);
+    }
 }
