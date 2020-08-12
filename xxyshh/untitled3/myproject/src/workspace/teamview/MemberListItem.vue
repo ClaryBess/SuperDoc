@@ -1,0 +1,88 @@
+<template>
+ <div class="docs" >
+      <div class="docs-item">
+        <!-- 展示图片为成员头像 -->
+        <!-- <img class="docimg" :src="memberItem.url" @click="itemClick"> -->
+        <img class="docimg" src="@/assets/head.jpg" @click="itemClick">
+        <div class="docs-info" @click="itemClick">
+          <p>{{memberItem.name}}</p>
+        </div>
+        <img class="img" src="@/assets/删除.svg" @click="deleteMem">
+        <img class="img" src="@/assets/管理.svg" @click="manageAuth">
+      </div>
+  </div>
+
+</template>
+
+<script>
+
+export default {
+  name: "MemberListItem",
+  data() {
+    return{
+    }
+  },
+  props: {
+      memberItem: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }
+    },
+  methods: {
+      itemClick() {
+        // 点击成员进入成员个人页面
+        this.$router.push('/homepage')
+      },
+      deleteMem() {
+        alert('删除成员')
+      },
+      manageAuth() {
+        alert('管理成员权限')
+      }
+    }
+};
+</script>
+
+<style>
+  .docs {
+    position: relative;
+    padding: 5px;
+  }
+  .docs-item {
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+    background-color: #f4f7ff;
+  }
+
+  .docimg {
+    width: 50px;
+    padding: 10px;
+  }
+
+  .img {
+    width: 20px;
+    padding-right: 10px;
+  }
+
+  .docs-info {
+    font-size: 16px;
+    position: relative;
+    padding-left: 0;
+    padding-top: 10px;
+    padding-top: 10px;
+    padding-right: 20px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .docs-info p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 3px;
+  }
+
+</style>

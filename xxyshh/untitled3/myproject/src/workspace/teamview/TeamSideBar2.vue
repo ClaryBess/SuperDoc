@@ -2,7 +2,7 @@
   <div id="TeamSideBar2">
     <el-row class="tac">
       <el-col>
-        <h3>创建者</h3>
+        <h3>成员</h3>
         <el-menu :default-active="currentindex" class="el-menu-vertical-demo">
           <el-menu-item index="1" @click="itemClick1">
             <span slot="title">加入团队</span>

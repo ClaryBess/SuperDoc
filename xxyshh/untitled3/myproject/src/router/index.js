@@ -19,6 +19,8 @@ import TeamView1 from "../workspace/teamview/TeamView1";
 import TeamView2 from "../workspace/teamview/TeamView2";
 import View from "../components/View";
 
+import ManageMember from "../workspace/teamview/ManageMember";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -84,8 +86,8 @@ const routes = [
   },
   {
     path: '/detail/:id',
-    name: 'change',
-    component: Change
+    name: 'view',
+    component: View
   },
   // {
   //   path: '/team/:id',
@@ -113,7 +115,13 @@ const routes = [
     path: '/view',
     name: 'view',
     component: View
-  }
+  },
+  //管理成员
+  {
+    path: '/team/manageMember',
+    name: 'manageMember',
+    component: ManageMember
+  },
 ]
 const router = new VueRouter({
   routes,

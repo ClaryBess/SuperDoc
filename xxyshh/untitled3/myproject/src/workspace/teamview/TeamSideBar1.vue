@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     itemClick1() {
+      this.$router.push("manageMember")
       console.log("管理成员")
     },
     itemClick2() {
