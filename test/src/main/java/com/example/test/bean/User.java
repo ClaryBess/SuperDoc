@@ -1,9 +1,8 @@
-package com.example.test.model;
+package com.example.test.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class User {
-
     private int UserID;
     private String UserName;
     private String Password;
