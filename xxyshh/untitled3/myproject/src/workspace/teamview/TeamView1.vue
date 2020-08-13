@@ -31,7 +31,7 @@
                 </el-form>
                 <div class="demo-drawer__footer">
                   <el-button @click="cancelForm" style="margin-right: 30px">取 消</el-button>
-                  <el-button type="primary" @click="$refs.drawer.closeDrawer()" :loading="loading">{{ loading ? '提交中 ...' : '确 定' }}</el-button>
+                  <el-button type="primary" @click="handleClose" :loading="loading">{{ loading ? '提交中 ...' : '确 定' }}</el-button>
                 </div>
               </div>
               <el-button style="float: right; padding: 3px 0" type="text" slot="reference">修改简介</el-button>
@@ -60,6 +60,28 @@
               <span style="font-size: 17px">
                 <strong>成员</strong>
               </span>
+              <el-popover
+                placement="top"
+                width="500"
+                trigger="click"
+                :before-close="handleClose"
+                :visible.sync="dialog"
+                style=" box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.9)">
+                <div class="demo-drawer__content">
+                  <el-form :model="formmember">
+                    <el-form-item label=" 请输入用户ID或者邮箱：" class="drawer-item-menber">
+                    <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
+                      <el-select v-model="select" slot="prepend" placeholder="请选择">
+                        <el-option label="用户ID" value="1"></el-option>
+                        <el-option label="用户邮箱" value="2"></el-option>
+                      </el-select>
+                      <el-button slot="append" type="primary" @click="submitForm('formmember')" icon="el-icon-search"></el-button>
+                    </el-input>
+                    </el-form-item>
+                  </el-form>
+                </div>
+                <el-button style="float: right; padding: 3px 0" type="text" slot="reference">添加成员</el-button>
+              </el-popover>
             </div>
             <div class="member-item">
               <!-- :member=传入的团队成员 -->
@@ -87,6 +109,7 @@ export default {
   components: { NavBar, TeamSideBar1, DocList, MemberList,RightBar },
   data() {
     return {
+      select: '',
       dialog: false,
       loading: false,
       headUrl: require("@/assets/head.jpg"),
@@ -146,14 +169,10 @@ export default {
       ],
       form: {
         name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
       },
+
+        input3: '',
+
       timer: null,
     };
   },
@@ -162,6 +181,23 @@ export default {
     this.id = this.$route.params.id;
   },
   methods: {
+    submitForm(formName) {
+      if (this.loading) {
+        return;
+      }
+      this.$confirm('确定要提交表单吗？')
+        .then(_ => {
+          this.loading = true;
+          this.timer = setTimeout(() => {
+            done();
+            // 动画关闭需要一定的时间
+            setTimeout(() => {
+              this.loading = false;
+            }, 400);
+          }, 2000);
+        })
+        .catch(_ => {});
+    },
     handleClose(done) {
       if (this.loading) {
         return;
@@ -227,8 +263,19 @@ export default {
     margin-top: 10px;
     font-weight: bold;
   }
+  .drawer-item-menber{
+    margin-bottom: 50px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
   .demo-drawer__footer{
     margin-bottom: 20px;
     margin-left: 27%;
+  }
+  .el-select .el-input {
+    width:120px;
+  }
+  .input-with-select .el-input-group__prepend {
+    background-color: #fff;
   }
 </style>
