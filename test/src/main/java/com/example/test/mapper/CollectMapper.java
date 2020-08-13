@@ -14,6 +14,9 @@ public interface CollectMapper {
     @Select("select * from Collect where UserID=#{UserID}")
     public List<Collect> getCollectByUser(Integer UserID);
 
+    @Select("select * from Collect where DocID=#{DocID} and UserID=#{UserID}")
+    public Collect getCollectByDocAndUser(Collect collect);
+
     @Options(useGeneratedKeys = true,keyProperty = "CollectID")
     @Insert("insert into Collect(UserID,DocID) values(#{UserID},#{DocID})")
     public int insertCollect(Collect collect);

@@ -1,7 +1,7 @@
 package com.example.test.controller;
 
 import com.example.test.bean.Browse;
-import com.example.test.mapper.BrowseMapper;
+import com.example.test.service.BrowseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,22 +13,22 @@ import java.util.List;
 public class BrowseController {
 
     @Autowired
-    BrowseMapper browseMapper;
+    BrowseService browseService;
 
     @GetMapping("/browse/{UserID}")
     public List<Browse> getBrowseByUser(@PathVariable("UserID") Integer UserID){
-        return browseMapper.getBrowseByUser(UserID);
+        return browseService.getBrowseByUser(UserID);
     }
 
     @GetMapping("/browse")
     public Browse insertBrowse(Browse browse){
-        browseMapper.insertBrowse(browse);
-        return browse;
+        browseService.insertBrowse(browse);
+        return browseService.getBrowseById(browse.getBrowseID());
     }
 
     @GetMapping("/browse/update/{BrowseID}")
     public Browse updateDateTime(@PathVariable("BrowseID") Integer BrowseID){
-        browseMapper.updateDateTime(BrowseID);
-        return browseMapper.getBrowseById(BrowseID);
+        browseService.updateDateTime(BrowseID);
+        return browseService.getBrowseById(BrowseID);
     }
 }

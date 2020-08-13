@@ -3,7 +3,6 @@ package com.example.test.mapper;
 import com.example.test.bean.Browse;
 import org.apache.ibatis.annotations.*;
 
-import java.sql.Date;
 import java.util.List;
 
 @Mapper

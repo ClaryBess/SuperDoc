@@ -34,6 +34,9 @@ public interface DocumentMapper {
     @Update("update Document set IsTeam=#{IsTeam},Team=#{Team} where DocID=#{DocID}")
     public int updateTea(Document document);
 
+    @Update("update Document set Editable=#{Editable} where DocID=#{DocID}")
+    public int updateEdi(Document document);
+
     @Update("update Document set CommentNumber=CommentNumber+1 where DocID=#{DocID}")
     public int commentDoc(Integer DocID);
 
