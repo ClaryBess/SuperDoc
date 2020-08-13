@@ -59,15 +59,6 @@
           模板库
           <i class="el-icon-link el-icon--right"></i>
         </el-button>
-        <el-button
-          size="small"
-          type="primary"
-          style="margin-bottom: 18px;margin-left: 4px"
-          @click="open"
-        >
-          解散团队
-          <i class="el-icon-link el-icon--right"></i>
-        </el-button>
       </div>
     </el-container>
 
@@ -145,28 +136,7 @@ export default {
   created() {
     //获取团队id
     this.id = this.$route.params.id;
-  },
-  methods: {
-    open() {
-      this.$confirm("确定解散该团队吗?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          this.$message({
-            type: "success",
-            message: "解散成功!",
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消操作",
-          });
-        });
-    },
-  },
+  }
 };
 </script>
 
@@ -192,6 +162,12 @@ export default {
 }
 .clearfix:after {
   clear: both;
+}
+.box-card {
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  width: 880px;
 }
 .rightBar {
   width: 5%;

@@ -14,8 +14,11 @@
           <el-menu-item index="2" @click="itemClick2">
             <span slot="title">团队文档</span>
           </el-menu-item>
-          <el-menu-item index="4" @click="itemClick4">
+          <el-menu-item index="3" @click="itemClick3">
             <span slot="title">设置文档权限</span>
+          </el-menu-item>
+          <el-menu-item index="4" @click="itemClick4">
+            <span slot="title">解散团队</span>
           </el-menu-item>
 
         </el-menu>
@@ -47,8 +50,27 @@ export default {
       this.$router.push("teamdoc")
       console.log("团队文档")
     },
-    itemClick4() {
+    itemClick3() {
       console.log("设置文档权限")
+    },
+    itemClick4() {
+      this.$confirm("确定解散该团队吗?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.$message({
+            type: "success",
+            message: "解散成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
+          });
+        });
     },
   },
 };

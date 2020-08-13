@@ -19,7 +19,6 @@
       <div class="rightBar">
         <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 4px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
         <el-button size="small" type="primary" style="margin-bottom: 18px">模板库<i class="el-icon-link el-icon--right"></i></el-button>
-        <el-button size="small" type="primary" style="margin-bottom: 18px;margin-left: 4px" @click="open">解散团队<i class="el-icon-link el-icon--right"></i></el-button>
       </div>
     </el-container>
   </el-container>
