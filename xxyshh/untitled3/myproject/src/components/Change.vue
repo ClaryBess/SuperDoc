@@ -20,6 +20,14 @@
                     <el-input v-model="docForm.title"></el-input>
                   </el-form-item>
                 </el-row>
+                <el-form-item label="文档权限">
+                  <el-checkbox-group v-model="docForm.privilege">
+                    <el-checkbox label="可查看" name="type"></el-checkbox>
+                    <el-checkbox label="可评论" name="type"></el-checkbox>
+                    <el-checkbox label="可编辑" name="type"></el-checkbox>
+                    <el-checkbox label="可分享" name="type"></el-checkbox>
+                  </el-checkbox-group>
+                </el-form-item>
                 <div class="editor">
                   <vue-ueditor-wrap v-model="docForm.doc" :config="ueConfig"></vue-ueditor-wrap>
                 </div>
@@ -50,6 +58,7 @@
           docForm:{
             title: "这里写旧标题",
             doc: "",
+            privilege: ['可查看']
           },
           ueConfig:{
             toolbars: [
