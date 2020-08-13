@@ -16,6 +16,26 @@
             <span style="font-size: 17px">
               <strong>团队简介</strong>
             </span>
+            <el-popover
+              placement="bottom"
+              width="490"
+              trigger="click"
+              :before-close="handleClose"
+              :visible.sync="dialog"
+            style=" box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.9)">
+              <div class="demo-drawer__content">
+                <el-form :model="form">
+                  <el-form-item label=" 请修改团队简介：" class="drawer-item">
+                    <el-input type="textarea"  :rows="4" style="margin-top: 10px" v-model="form.name" autocomplete="off"></el-input>
+                  </el-form-item>
+                </el-form>
+                <div class="demo-drawer__footer">
+                  <el-button @click="cancelForm" style="margin-right: 30px">取 消</el-button>
+                  <el-button type="primary" @click="$refs.drawer.closeDrawer()" :loading="loading">{{ loading ? '提交中 ...' : '确 定' }}</el-button>
+                </div>
+              </div>
+              <el-button style="float: right; padding: 3px 0" type="text" slot="reference">修改简介</el-button>
+            </el-popover>
           </div>
           <div
             class="text item"
@@ -52,7 +72,6 @@
       </el-main>
       <right-bar></right-bar>
     </el-container>
-
     <el-backtop right="80"></el-backtop>
   </el-container>
 </template>
@@ -63,12 +82,13 @@ import TeamSideBar1 from "./TeamSideBar1";
 import DocList from "../DocList";
 import MemberList from "./MemberList";
 import RightBar from "../RightBar";
-
 export default {
   name: "TeamView1",
   components: { NavBar, TeamSideBar1, DocList, MemberList,RightBar },
   data() {
     return {
+      dialog: false,
+      loading: false,
       headUrl: require("@/assets/head.jpg"),
       // team的id
       id: null,
@@ -87,11 +107,11 @@ export default {
         },
         {
           id: "4",
-          title: "四",
+          title: "四少时诵诗书所所所所所所所所所所所所所所所",
         },
         {
           id: "5",
-          title: "第五wwuwuwuwu个文档",
+          title: "第五wwuwuwuwuwwwwwwwwwwwwww个文档",
         },
         {
           id: "6",
@@ -124,42 +144,91 @@ export default {
           name: "wzz",
         },
       ],
+      form: {
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      },
+      timer: null,
     };
   },
   created() {
     //获取团队id
     this.id = this.$route.params.id;
+  },
+  methods: {
+    handleClose(done) {
+      if (this.loading) {
+        return;
+      }
+      this.$confirm('确定要提交表单吗？')
+        .then(_ => {
+          this.loading = true;
+          this.timer = setTimeout(() => {
+            done();
+            // 动画关闭需要一定的时间
+            setTimeout(() => {
+              this.loading = false;
+            }, 400);
+          }, 2000);
+        })
+        .catch(_ => {});
+    },
+    cancelForm() {
+      this.loading = false;
+      this.dialog = false;
+      clearTimeout(this.timer);
+    }
   }
 };
 </script>
 
 <style>
-.text {
-  font-size: 14px;
-}
-.item {
-  margin: 15px 13px;
-}
-.leader-item {
-  margin-left: 18px;
-  margin-bottom: 1px;
-}
-.member-item {
-  margin-left: 18px;
-  margin-bottom: 1px;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-.clearfix:after {
-  clear: both;
-}
-.box-card {
-  margin-top: 50px;
-  margin-left: 50px;
-  margin-bottom: 10px;
-  width: 880px;
-}
+  .text {
+    font-size: 14px;
+  }
+  .item {
+    margin: 15px 13px;
+  }
+  .leader-item {
+    margin-left: 18px;
+    margin-bottom: 1px;
+  }
+  .member-item {
+    margin-left: 18px;
+    margin-bottom: 1px;
+  }
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both;
+  }
+  .box-card {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    width: 880px;
+  }
+  .demo-drawer__content{
+    width: 85%;
+    margin:
+      auto;
+  }
+  .drawer-item{
+    margin-bottom: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .demo-drawer__footer{
+    margin-bottom: 20px;
+    margin-left: 27%;
+  }
 </style>

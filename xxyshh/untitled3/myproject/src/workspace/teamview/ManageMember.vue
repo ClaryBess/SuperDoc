@@ -6,10 +6,10 @@
       </div>
     </el-header>
     <el-container>
-       <el-aside width="200px">
+       <el-aside width="15%">
         <team-side-bar1 currentindex='1'></team-side-bar1>
       </el-aside>
-      <el-main>
+      <el-main style="width: 80%">
         <h2 class="h2color">管理成员</h2>
         <!-- :member=传入的团队成员 -->
         <!-- <member-list :members="teamMembers"></member-list> -->
