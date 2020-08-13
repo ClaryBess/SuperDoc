@@ -59,6 +59,7 @@
 <script>
     import NavBar from "./NavBar";
     import NavBarOrigin from "./NavBarOrigin";
+
     export default {
       name: "Register1",
       components: {NavBar, NavBarOrigin},
@@ -125,14 +126,39 @@
           }
         },
         submitForm(formName) {
-          this.$refs[formName].validate((valid) => {
-            if (valid) {
-              this.$router.push('Register2')
-            } else {
-              console.log('error submit!!');
-              return false;
-            }
-          });
+          var _this=this
+          this.axios.post("/user/register",{
+            Password:this.ruleForm.pass,
+            Username:this.ruleForm.username,
+            Email:this.ruleForm.email
+          })
+            .then(function (response) {
+              // console.log(response.data.status)
+              if(response.data.status === 200){
+                //alert("恭喜你，注册成功")
+                //   _this.$message({
+                //   message: '恭喜你，注册成功',
+                //   type: 'success'
+                // })
+                sessionStorage.setItem('userL', JSON.stringify(response.data.data))
+                _this.$router.push('Register2')
+              }
+              else if(response.data.status==500){
+                _this.$message({
+                  message: '该邮箱已注册，请更换一个',
+                  type: 'error'
+                })
+              }
+              else {
+                _this.$message({
+                  message: '该用户名已存在，请更换一个',
+                  type: 'error'
+                })
+              }
+            })
+            .catch(function (error) {
+              console.log(error)
+            })
         },
         resetForm(formName) {
           this.$refs[formName].resetFields();
@@ -140,7 +166,6 @@
       }
     }
 </script>
-
 <style scoped>
   #color{
     height: 800px;

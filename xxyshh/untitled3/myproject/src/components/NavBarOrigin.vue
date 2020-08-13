@@ -1,13 +1,13 @@
 // 这是登录前导航栏组件
 <template>
   <div>
-    <div id="root" class="tabBar">
+    <div class="tabBar">
       <router-link to="/" ><img class="logo" src="../assets/nav-logo.png"  alt=""/></router-link>
       <div class="right">
 
         <ul class="rightNav">
           <li>
-            <a href="#" class="login" @click="dialogFormVisible = true" style="text-align: center">登录</a>
+            <a class="login" @click="dialogFormVisible = true" style="text-align: center">登录</a>
           </li>
           <li>
             <router-link to="/Register1" class="write">
@@ -34,7 +34,7 @@
             </el-col>
           </el-form-item>
         </el-form>
-        <SliderVerificationCode v-model="slider" background="#CCCCCC"/>
+        <SliderVerificationCode v-model="slider" background="#FFFFFF" contentColor="#333333" content=">>>请拖动滑块>>>"/>
       </div>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>

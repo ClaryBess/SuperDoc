@@ -1,9 +1,8 @@
 <template>
-  <el-container >
-
+  <el-container>
     <el-header>
       <div  v-if="hasLogin">
-        <NavBar :headSrc="headUrl">
+        <NavBar>
         </NavBar>
       </div>
       <div v-else>
@@ -27,11 +26,8 @@
                   :clickEffect="true"
                   clickMode="push">
       </vue-particles>
-
     </el-header>
-
     <el-main>
-
       <div class="text"  style="z-index: 999; height: 500px" >
          <img  src="../assets/main.jpg" style="height:560px "  width="1000px" alt="">
       </div>
@@ -58,7 +54,6 @@
         </el-carousel>
       </div>
     </el-main>
-
     <el-footer class="foot">
       <div style="margin-left:40%; color: #ffffff;line-height:35px;font-family: 'Hiragino Sans GB' ">
         ©2020 AiliGay小组<br/>
