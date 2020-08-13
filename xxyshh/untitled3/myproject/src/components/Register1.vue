@@ -32,7 +32,7 @@
               <el-input placeholder="请输入邮箱" v-model="ruleForm.email"></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="pass">
-              <el-input placeholder="请输入密码" type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+              <el-input placeholder="长度需大于5位，且包含数字、大、小写、符号中的至少2种" type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="确认密码" prop="checkPass">
               <el-input placeholder="请再次输入密码" type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
@@ -41,13 +41,12 @@
               <el-input placeholder="请输入2-10个字符" v-model="ruleForm.username"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button style="margin-left: 30px; margin-top: 30px" type="primary" @click="submitForm('ruleForm')">
+              <el-button style="margin-left: 60px; margin-top: 30px" type="primary" @click="submitForm('ruleForm')">
                   完成
                 </el-button>
               <el-button style="margin-left: 60px; margin-top: 30px"  @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
           </el-form>
-
         </div>
         </el-card>
       </el-main>
@@ -63,6 +62,11 @@
       name: "Register1",
       components: {NavBar, NavBarOrigin},
       data() {
+        var regUpper = /[A-Z]/;
+        var regLower = /[a-z]/;
+        var regNum = /[0-9]/;
+        var regTeShu =new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？+-]");
+        var complex = 0;
         var checkName = (rule, value, callback) => {
           if (value == '') {
             return callback(new Error('用户名不能为空'));
@@ -80,10 +84,25 @@
           if (value === '') {
             callback(new Error('请输入密码'));
           } else {
-            if (this.ruleForm.checkPass !== '') {
-              this.$refs.ruleForm.validateField('checkPass');
+            if (regLower.test(value)) {
+              ++complex;
             }
-            callback();
+            if (regUpper.test(value)) {
+              ++complex;
+            }
+            if (regNum.test(value)) {
+              ++complex;
+            }
+            if (regTeShu.test(value)) {
+              ++complex;
+            }
+            if (complex < 2 || value.length < 6) {
+              callback(new Error('长度需大于5位，且包含数字、字母大、小写、符号中的至少2种'));
+            } else if (this.ruleForm.checkPass !== '') {
+              this.$refs.ruleForm.validateField('checkPass');
+            }else {
+              callback();
+            }
           }
         };
         var validatePass2 = (rule, value, callback) => {
@@ -116,7 +135,7 @@
           percentage: 0,
         };
       },
-      methods: {
+      methods:{
         customColorMethod(percentage) {
           if (percentage < 100) {
             return '#909399';
@@ -166,8 +185,9 @@
   }
   .regform{
     margin-top: 44px;
-    margin-left: 25%;
+    margin-left: 22%;
     margin-right: 30%;
+    width: 510px;
   }
 
 </style>
