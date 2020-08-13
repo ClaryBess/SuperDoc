@@ -20,14 +20,45 @@
                     <el-input v-model="docForm.title"></el-input>
                   </el-form-item>
                 </el-row>
-                <el-form-item label="文档权限">
-                  <el-checkbox-group v-model="docForm.privilege">
-                    <el-checkbox label="可查看" name="type"></el-checkbox>
-                    <el-checkbox label="可评论" name="type"></el-checkbox>
-                    <el-checkbox label="可编辑" name="type"></el-checkbox>
-                    <el-checkbox label="可分享" name="type"></el-checkbox>
-                  </el-checkbox-group>
-                </el-form-item>
+                <p style="margin-left: 12px; font-size: 14px">文档权限：</p>
+                <el-row>
+                  <el-col span="6">
+                    <el-form-item label="查看">
+                      <el-select v-model="docForm.viewP" placeholder="请选择">
+                        <el-option label="不公开" value="0"></el-option>
+                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="所有人" value="1"></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                  <el-col span="6">
+                    <el-form-item label="评论">
+                      <el-select v-model="docForm.commentP" placeholder="请选择">
+                        <el-option label="不公开" value="0"></el-option>
+                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="所有人" value="1"></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                  <el-col span="6">
+                    <el-form-item label="编辑">
+                      <el-select v-model="docForm.editP" placeholder="请选择">
+                        <el-option label="不公开" value="0"></el-option>
+                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="所有人" value="1"></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                  <el-col span="6">
+                    <el-form-item label="分享">
+                      <el-select v-model="docForm.shareP" placeholder="请选择">
+                        <el-option label="不公开" value="0"></el-option>
+                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="所有人" value="1"></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
                 <div class="editor">
                   <vue-ueditor-wrap v-model="docForm.doc" :config="ueConfig"></vue-ueditor-wrap>
                 </div>
@@ -51,7 +82,7 @@
   import NavBar from "./NavBar";
   import VueUeditorWrap from "vue-ueditor-wrap";
   export default {
-    name: "Edit",
+    name: "EditTeamDoc",
     components: {UEditor, NavBar, VueUeditorWrap},
     data(){
       return{
@@ -59,7 +90,10 @@
         docForm:{
           title: "",
           doc: "我是默认内容咿呀咿呀咿",
-          privilege: []
+          viewP: '',
+          commentP: '',
+          editP: '',
+          shareP: ''
         },
         ueConfig:{
           toolbars: [

@@ -16,7 +16,6 @@
 <script>
 import img1 from "@/assets/收藏.svg";
 import img2 from '@/assets/收藏 (1).svg';
-
 export default {
   name: "TeamsListItem",
   data() {

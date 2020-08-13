@@ -19,10 +19,11 @@ import TeamView1 from "../workspace/teamview/TeamView1";
 import TeamView2 from "../workspace/teamview/TeamView2";
 import View from "../components/View";
 
-import ManageMember from "../workspace/teamview/ManageMember";
 import TeamDoc from "../workspace/teamview/TeamDoc";
 
 import TemLib from "../workspace/temLib/TemLib";
+import EditTeamDoc from "../components/EditTeamDoc";
+import ChangeTeamDoc from "../components/ChangeTeamDoc";
 
 import Message from "../workspace/message/Message";
 
@@ -116,12 +117,6 @@ const routes = [
     name: 'welcome',
     component: Welcome
   },
-  // 团队信息
-  {
-    path: '/team/manageMember',
-    name: 'manageMember',
-    component: ManageMember
-  },
   //模板库页面
   {
     path: '/temlib',
@@ -144,6 +139,16 @@ const routes = [
     path: '/change',
     name: 'change',
     component: Change
+  },
+  {
+    path: '/editTeam',
+    name: 'editTeam',
+    component: EditTeamDoc
+  },
+  {
+    path: '/changeTeam',
+    name: 'changeTeam',
+    component: ChangeTeamDoc
   }
 ]
 const router = new VueRouter({

@@ -11,15 +11,11 @@
         <team-side-bar1></team-side-bar1>
       </el-aside>
       <el-main style="width: 80%">
-        <h2>团队文档</h2>
         <!-- <doc-list :docs="teamDocs"></doc-list> -->
-        <doc-list :docs="Docs"></doc-list>
+        <doc-list :docs="Docs" style="margin-top: 50px; margin-left: 25px"></doc-list>
         <h2>{{id}}</h2>
       </el-main>
-      <div class="rightBar">
-        <el-button size="small"type="primary" style="margin-bottom: 18px;margin-left: 4px">新建文档<i class="el-icon-edit el-icon--right"></i></el-button>
-        <el-button size="small" type="primary" style="margin-bottom: 18px">模板库<i class="el-icon-link el-icon--right"></i></el-button>
-      </div>
+      <right-bar></right-bar>
     </el-container>
   </el-container>
 </template>
@@ -28,9 +24,10 @@
   import NavBar from "@/components/NavBar";
   import TeamSideBar1 from "./TeamSideBar1";
   import DocList from "../DocList";
+  import RightBar from "../RightBar";
   export default {
     name: "TeamDoc",
-    components: { NavBar, TeamSideBar1, DocList },
+    components: { NavBar, TeamSideBar1, DocList, RightBar },
     data() {
       return {
         headUrl: require("@/assets/head.jpg"),
@@ -51,11 +48,11 @@
           },
           {
             id: "4",
-            title: "四",
+            title: "四sssssssssssssssssssssssssssssss",
           },
           {
             id: "5",
-            title: "第五wwuwuwuwu个文档",
+            title: "第五wwuwuwuwuwwwwwwwwwwwwwwwwwwwwwwwwwwwwww个文档",
           },
           {
             id: "6",
