@@ -21,10 +21,10 @@ export default {
   name: "RightBar",
   methods: {
     newDoc() {
-      this.$router.push("Edit");
+      this.$router.push("/Edit");
     },
     intoTemLib() {
-      this.$router.push("temlib");
+      this.$router.push("/temlib");
     },
   },
 };

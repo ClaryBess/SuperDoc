@@ -50,16 +50,7 @@
           </el-card>
         </div>
       </el-main>
-      <div class="rightBar">
-        <el-button size="small" type="primary" style="margin-bottom: 18px;margin-left: 4px">
-          新建文档
-          <i class="el-icon-edit el-icon--right"></i>
-        </el-button>
-        <el-button size="small" type="primary" style="margin-bottom: 18px">
-          模板库
-          <i class="el-icon-link el-icon--right"></i>
-        </el-button>
-      </div>
+      <right-bar></right-bar>
     </el-container>
 
     <el-backtop right="80"></el-backtop>
@@ -71,9 +62,11 @@ import NavBar from "@/components/NavBar";
 import TeamSideBar1 from "./TeamSideBar1";
 import DocList from "../DocList";
 import MemberList from "./MemberList";
+import RightBar from "../RightBar";
+
 export default {
   name: "TeamView1",
-  components: { NavBar, TeamSideBar1, DocList, MemberList },
+  components: { NavBar, TeamSideBar1, DocList, MemberList,RightBar },
   data() {
     return {
       headUrl: require("@/assets/head.jpg"),
@@ -168,11 +161,5 @@ export default {
   margin-left: 50px;
   margin-bottom: 10px;
   width: 880px;
-}
-.rightBar {
-  width: 5%;
-  float: right;
-  margin-right: 80px;
-  margin-top: 60px;
 }
 </style>
