@@ -48,8 +48,8 @@ export default {
 
 .goods-info {
   font-size: 18px;
-  position: absolute;
-  bottom: 5px;
+  position: relative;
+  bottom: 7px;
   left: 0;
   right: 0;
   overflow: hidden;
@@ -60,6 +60,6 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 </style>
