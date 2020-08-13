@@ -199,7 +199,22 @@
           autoHeightEnabled:false
         }
       }
+    },
+  mounted () {
+    console.log(this.$route.name);
+    let _this = this
+    window.onbeforeunload = function (e) {
+      if (_this.$route.name == 'changeTeam') {
+        e = e || window.event;
+        if (e) {
+          e.returnValue = '关闭提示1111'
+        }
+        return '关闭提示222'
+      } else {
+        window.onbeforeunload = null
+      }
     }
+  }
   }
 </script>
 

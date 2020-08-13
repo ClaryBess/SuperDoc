@@ -50,17 +50,17 @@
   import NavBar from "./NavBar";
   import VueUeditorWrap from "vue-ueditor-wrap";
     export default {
-        name: "Change",
+      name: "Change",
       components: {UEditor, NavBar, VueUeditorWrap},
-      data(){
-        return{
+      data() {
+        return {
           headUrl: require('../assets/head.jpg'),
-          docForm:{
+          docForm: {
             title: "这里写旧标题",
             doc: "",
             privilege: ['可查看']
           },
-          ueConfig:{
+          ueConfig: {
             toolbars: [
               [
                 'source', // 源代码
@@ -161,7 +161,22 @@
             initialFrameWidth: "100%",
             // 上传文件接口
             enableAutoSave: true,
-            autoHeightEnabled:false
+            autoHeightEnabled: false
+          }
+        }
+      },
+      mounted () {
+        console.log(this.$route.name);
+        let _this = this
+        window.onbeforeunload = function (e) {
+          if (_this.$route.name == 'change') {
+            e = e || window.event;
+            if (e) {
+              e.returnValue = '关闭提示1111'
+            }
+            return '关闭提示222'
+          } else {
+            window.onbeforeunload = null
           }
         }
       }
