@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("/user/{UserID}")
     public User getUserById(@PathVariable("UserID") Integer UserID){
-        return userMapper.getUserById(UserID);
+        return userMapper.selectUserById(UserID);
     }
 
     @GetMapping("/user")
@@ -28,11 +28,11 @@ public class UserController {
 
     @PostMapping("/user/regisiter")
     public CommonResult register(@RequestBody User user){
-        User user1=userMapper.getUserByEmail(user.getEmail());
+        User user1=userMapper.selectUserByEmail(user.getEmail());
         if(user1!=null){
             return new CommonResult(500,"email already exists!",null);
         }
-        User user2=userMapper.getUserByName(user.getUserName());
+        User user2=userMapper.selectUserByName(user.getUserName());
         if(user2!=null){
             return new CommonResult(400,"username already exists!",null);
         }
@@ -44,7 +44,7 @@ public class UserController {
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password ,
                         Map<String,Object> map, HttpSession session){
-        User user=userMapper.getUserByName(username);
+        User user=userMapper.selectUserByName(username);
         if(user.getPassword().equals(password)){
             session.setAttribute("loginUser",user);
 //            session.setAttribute("message",a);

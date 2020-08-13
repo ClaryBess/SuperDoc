@@ -66,17 +66,4 @@ public class User {
     public void setProfileUrl(String profileUrl) {
         ProfileUrl = profileUrl;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "UserID=" + UserID +
-                ", UserName='" + UserName + '\'' +
-                ", Password='" + Password + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Gender='" + Gender + '\'' +
-                ", Birthday=" + Birthday +
-                ", ProfileUrl='" + ProfileUrl + '\'' +
-                '}';
-    }
 }

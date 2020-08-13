@@ -2,35 +2,44 @@ package com.example.test.mapper;
 
 import com.example.test.bean.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Mapper
 public interface UserMapper {
 
-    @Select("select * from User where UserID=#{UserID}")
-    public User getUserById(Integer UserID);
+    //注册用户
 
-    @Select("select * from User where UserName=#{UserName}")
-    public User getUserByName(String UserName);
+    int Register(User user);
 
-    @Select("select * from User where Email=#{Email}")
-    public User getUserByEmail(String Email);
+    //登录信息校对
+    @Select("select * from User where UserName=#{name},Password=#{password}")
+    User getInfo(String name, String password);
 
-    @Delete("delete from User where UserID=#{UserID}")
-    public int deleteUserById(Integer UserID);
+    //根据userid查询用户信息
+    @Select("select * from User where UserID=#{id}")
+    User selectUserById(Integer id);
 
-    @Options(useGeneratedKeys = true,keyProperty = "UserID")
-    @Insert("insert into User(UserName,Password,Email,Gender,Birthday,ProfileUrl) values(#{UserName},#{Password},#{Email},#{Gender},#{Birthday},#{ProfileUrl})")
-    public int insertUser(User user);
+    //根据用户名查找用户
+    @Select("select * from User where UserName=#{username}")
+    User selectUserByName(String username);
 
-    @Update("update User set Password=#{Password} where UserID=#{UserID}")
-    public int updatePwd(User user);
+    //根据邮箱查找用户
+    @Select("select * from User where UserEmail=#{email}")
+    User selectUserByEmail(String email);
 
-    @Update("update User set Gender=#{Gender} where UserID=#{UserID}")
-    public int updateGen(User user);
+    //删除用户
+    @Delete("delete from User where UserID=#{id}")
+    void deleteUser(Integer id);
 
-    @Update("update User set Birthday=#{Birthday} where UserID=#{UserID}")
-    public int updateBir(User user);
+    //修改用户
+    @Update("update User set UserName=#{UserName},Password=#{Password},Gender=#{Gender},Birthday=#{Birthday},ProfileUrl=#{ProfileUrl} where UserID=#{id}")
+    void updateUser(User user);
 
-    @Update("update User set ProfileUrl=#{ProfileUrl} where UserID=#{UserID}")
-    public int updatePro(User user);
+    //用户退出
+    void exitUser(User user);
+
+    //加入用户
+    @Insert("insert into User(UserName,Password,Email) values(#{name},#{password},#{email})")
+    void insertUser(User user);
 }
