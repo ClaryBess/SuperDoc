@@ -1,7 +1,7 @@
 <template>
   <el-container >
 
-    <el-header>
+    <el-header >
       <div  v-if="hasLogin">
         <NavBar :headSrc="headUrl">
         </NavBar>
@@ -12,12 +12,12 @@
       </div>
       <vue-particles style="z-index: -1"
                   color="#9ddcff"
-                  :particleOpacity="0.7"
+                  :particleOpacity="0.9"
                   :particlesNumber="80"
                   shapeType="circle"
                   :particleSize="4"
                   linesColor="#dedede"
-                  :linesWidth="1"
+                  :linesWidth="2"
                   :lineLinked="true"
                   :lineOpacity="0.4"
                   :linesDistance="150"
@@ -31,9 +31,8 @@
     </el-header>
 
     <el-main>
-
-      <div class="text"  style="z-index: 999; height: 500px" >
-         <img  src="../assets/main.jpg" style="height:560px "  width="1000px" alt="">
+      <div class="img2" >
+         <img class="bgimg" width="80%" src="../assets/main.jpg"  alt="">
       </div>
       <div style="margin-top: 120px">
         <el-carousel :interval="2900" type="card" height="550px" >
@@ -58,7 +57,6 @@
         </el-carousel>
       </div>
     </el-main>
-
     <el-footer class="foot">
       <div style="margin-left:40%; color: #ffffff;line-height:35px;font-family: 'Hiragino Sans GB' ">
         ©2020 AiliGay小组<br/>
@@ -123,20 +121,39 @@
     width: 100%;
     margin-top: 20px;
   }
-  .text{
+  bgimg{
+    display: block;
+  }
+  .img2 {
+    z-index: 999;
+    height: 500px;
     width:80%;
-    margin-left: 50px;
+    margin-left: 20%;
+    position: relative;
+  }
+  .cover {
+    z-index: 999;
+    height: 600px;
+    width:80%;
+    margin-left: 10%;
     margin-top: 30px;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 10%;
-    padding-right: 5%;
-    box-shadow: 0 2px 12px 0 rgba(112, 112, 112, 0.2);
+    position: relative;
+    overflow: hidden;
+    position:relative;
+  }
+  .cover:after{
+    position:absolute;
+    content:'';
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    box-shadow:0 0 30px 10px rgba(255,255,255,.7) inset;
   }
   .background{
     width:100%;
     margin-top: 60px;
-    height:1260px;  /**宽高100%是为了图片铺满屏幕 */
+    height:1100px;  /**宽高100%是为了图片铺满屏幕 */
     z-index:-1;
     position: absolute;
     background-repeat: repeat-y;
