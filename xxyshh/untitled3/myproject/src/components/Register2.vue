@@ -31,7 +31,7 @@
                 multiple
                 :limit="1"
                 :on-exceed="handleExceed"
-                :file-list="fileList"
+                :file-list="ruleForm.fileList"
                 list-type="picture">
                 <el-button size="small" type="primary">点击上传</el-button>
                 <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
@@ -67,7 +67,6 @@
 <script>
   import NavBar from "./NavBar";
   import NavBarOrigin from "./NavBarOrigin";
-
   export default {
     name: "Register2",
     components: {NavBar, NavBarOrigin},
@@ -80,7 +79,7 @@
         }
       };
       var checkSex = (rule, value, callback) => {
-        if (value === '') {
+        if (value != '男' && value != '女' ) {
           callback(new Error('请选择性别'));
         } else {
           callback();
@@ -90,7 +89,12 @@
         ruleForm: {
           radio1: '男',
           birth: '',
-          fileList: []
+          fileList: [
+            {
+              name: '默认头像.png',
+              url: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
+            }
+          ]
         },
         rules: {
           sex: [
