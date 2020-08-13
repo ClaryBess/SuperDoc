@@ -3,9 +3,9 @@
       <div class="docs-item">
         <img class="docimg" src="@/assets/mes.svg" @click="itemClick">
         <div class="docs-info" @click="itemClick">
-          <p>{{ mesItem.title }}</p>
+          <p>{{ mesItem.content }}</p>
         </div>
-        <img class="img" src="@/assets/删除.svg">
+        <img class="img" src="@/assets/删除.svg" @click="deleteMes">
       </div>
   </div>
 
@@ -29,6 +29,10 @@ export default {
   methods: {
       itemClick() {
         alert('这是一条消息')
+        this.mesItem.isRead=true
+      },
+      deleteMes() {
+        alert('删除消息')
       }
     }
 };
@@ -37,13 +41,13 @@ export default {
 <style>
   .docs {
     position: relative;
-    padding: 5px;
+    padding: 10px;
   }
   .docs-item {
     display: flex;
     position: relative;
     border-radius: 20px;
-    padding: 1px;
+    padding: 5px;
     background-color: #f4f7f8;
   }
 
@@ -53,14 +57,17 @@ export default {
   }
 
   .img {
-    width: 20px;
+    position:fixed;
+    right: 200px;
+    width: 30px;
+    padding-top: 20px;
     padding-right: 10px;
   }
 
   .docs-info {
     font-size: 16px;
     position: relative;
-    padding-left: 0;
+    padding-left: 0px;
     padding-top: 10px;
     padding-top: 10px;
     padding-right: 20px;
