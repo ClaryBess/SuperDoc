@@ -19,7 +19,6 @@ import TeamView1 from "../workspace/teamview/TeamView1";
 import TeamView2 from "../workspace/teamview/TeamView2";
 import View from "../components/View";
 
-import ManageMember from "../workspace/teamview/ManageMember";
 import TeamDoc from "../workspace/teamview/TeamDoc";
 
 import TemLib from "../workspace/temLib/TemLib";
@@ -113,12 +112,6 @@ const routes = [
     path: '/',
     name: 'welcome',
     component: Welcome
-  },
-  // 团队信息
-  {
-    path: '/team/manageMember',
-    name: 'manageMember',
-    component: ManageMember
   },
   //模板库页面
   {

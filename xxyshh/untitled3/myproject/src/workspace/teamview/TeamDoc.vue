@@ -11,9 +11,8 @@
         <team-side-bar1></team-side-bar1>
       </el-aside>
       <el-main style="width: 80%">
-        <h2>团队文档</h2>
         <!-- <doc-list :docs="teamDocs"></doc-list> -->
-        <doc-list :docs="Docs"></doc-list>
+        <doc-list :docs="Docs" style="margin-top: 50px; margin-left: 25px"></doc-list>
         <h2>{{id}}</h2>
       </el-main>
       <div class="rightBar">
@@ -51,11 +50,11 @@
           },
           {
             id: "4",
-            title: "四",
+            title: "四sssssssssssssssssssssssssssssss",
           },
           {
             id: "5",
-            title: "第五wwuwuwuwu个文档",
+            title: "第五wwuwuwuwuwwwwwwwwwwwwwwwwwwwwwwwwwwwwww个文档",
           },
           {
             id: "6",
