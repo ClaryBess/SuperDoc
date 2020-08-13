@@ -126,23 +126,38 @@
           }
         },
         submitForm(formName) {
-          this.$refs[formName].validate((valid) => {
-            if (valid) {
-              this.post("/register",this.submitForm()).then(retDate => {
-                if (retDate.ok) {
-                  this.store.dispatch('setUser', retDate)
-                  // 注册成功跳转到首页
-                  this.$message.success(retDate.message)
-                  this.$router.push('NavBar')
-                } else {
-                  this.showMessage(retDate.message)
-                }
-              })
-            }else {
-              console.log('error submit!!');
-              return false;
-            }
+          var _this=this
+          this.axios.post("/user/register",{
+            Password:this.ruleForm.pass,
+            Username:this.ruleForm.username,
+            Email:this.ruleForm.email
           })
+            .then(function (response) {
+              // console.log(response.data.status)
+              if(response.data.status === 200){
+                //alert("恭喜你，注册成功")
+                //   _this.$message({
+                //   message: '恭喜你，注册成功',
+                //   type: 'success'
+                // })
+                _this.$router.push('NavBar')
+              }
+              else if(response.data.status==500){
+                _this.$message({
+                  message: '该邮箱已注册，请更换一个',
+                  type: 'error'
+                })
+              }
+              else {
+                _this.$message({
+                  message: '该用户名已存在，请更换一个',
+                  type: 'error'
+                })
+              }
+            })
+            .catch(function (error) {
+              console.log(error)
+            })
         },
         resetForm(formName) {
           this.$refs[formName].resetFields();
