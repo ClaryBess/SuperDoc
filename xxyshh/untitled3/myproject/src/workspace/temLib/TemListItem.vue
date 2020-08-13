@@ -42,7 +42,7 @@ export default {
 
 .goods-item img {
   width: 265px;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 5px;
 }
 
