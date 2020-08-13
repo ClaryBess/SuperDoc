@@ -9,9 +9,12 @@
         </div>
         <el-menu :default-active="currentindex" class="el-menu-vertical-demo">
           <el-menu-item index="1" @click="itemClick1">
-            <span slot="title">加入团队</span>
+            <span slot="title">团队信息</span>
           </el-menu-item>
           <el-menu-item index="2" @click="itemClick2">
+            <span slot="title">团队文档</span>
+          </el-menu-item>
+          <el-menu-item index="4" @click="itemClick4">
             <span slot="title">退出团队</span>
           </el-menu-item>
         </el-menu>
@@ -35,10 +38,31 @@ export default {
   },
   methods: {
     itemClick1() {
-      console.log("加入团队")
+      this.$router.push("2")
+      console.log("团队信息")
     },
     itemClick2() {
-      console.log("退出团队")
+      this.$router.push("teamdoc2")
+      console.log("团队文档")
+    },
+    itemClick4() {
+      this.$confirm("确定退出该团队吗?", "提示", {
+      confirmButtonText: "确定",
+      cancelButtonText: "取消",
+      type: "warning",
+    })
+      .then(() => {
+        this.$message({
+          type: "success",
+          message: "已提交申请!",
+        });
+      })
+      .catch(() => {
+        this.$message({
+          type: "info",
+          message: "已取消操作",
+        });
+      });
     }
   },
 };

@@ -18,8 +18,8 @@ import Change from "../components/Change";
 import TeamView1 from "../workspace/teamview/TeamView1";
 import TeamView2 from "../workspace/teamview/TeamView2";
 import View from "../components/View";
-
 import TeamDoc from "../workspace/teamview/TeamDoc";
+import TeamDoc2 from "../workspace/teamview/TeamDoc2";
 
 import TemLib from "../workspace/temLib/TemLib";
 
@@ -121,11 +121,17 @@ const routes = [
     name: 'temlib',
     component: TemLib
   },
-  // 团队文档
+  // 团队文档-组长
   {
     path: '/team/teamdoc',
     name: 'teamdoc',
     component: TeamDoc
+  },
+  // 团队文档-成员
+  {
+    path: '/team/teamdoc2',
+    name: 'teamdoc2',
+    component: TeamDoc2
   },
   //消息页面
   {
