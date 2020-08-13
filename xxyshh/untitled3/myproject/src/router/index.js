@@ -26,6 +26,7 @@ import EditTeamDoc from "../components/EditTeamDoc";
 import ChangeTeamDoc from "../components/ChangeTeamDoc";
 
 import Message from "../workspace/message/Message";
+import NavBarOrigin from "../components/NavBarOrigin";
 
 Vue.use(VueRouter)
 
@@ -155,6 +156,11 @@ const routes = [
     path: '/changeTeam',
     name: 'changeTeam',
     component: ChangeTeamDoc
+  },
+  {
+    path:'/nav',
+    name:'nav',
+    component: NavBarOrigin
   }
 ]
 const router = new VueRouter({
