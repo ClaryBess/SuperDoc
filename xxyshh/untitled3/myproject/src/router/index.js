@@ -23,6 +23,8 @@ import ManageMember from "../workspace/teamview/ManageMember";
 import TeamDoc from "../workspace/teamview/TeamDoc";
 
 import TemLib from "../workspace/temLib/TemLib";
+import EditTeamDoc from "../components/EditTeamDoc";
+import ChangeTeamDoc from "../components/ChangeTeamDoc";
 
 Vue.use(VueRouter)
 
@@ -136,6 +138,16 @@ const routes = [
     path: '/change',
     name: 'change',
     component: Change
+  },
+  {
+    path: '/editTeam',
+    name: 'editTeam',
+    component: EditTeamDoc
+  },
+  {
+    path: '/changeTeam',
+    name: 'changeTeam',
+    component: ChangeTeamDoc
   }
 ]
 const router = new VueRouter({

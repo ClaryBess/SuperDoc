@@ -54,38 +54,20 @@
                 </el-row>
               </div>
               <el-row></el-row>
-              <ul style="list-style: none;margin: 0; padding: 0;"">
-                <li>
+              <ul style="list-style: none;margin: 0; padding: 0;">
+                <li v-for="item in commentItem">
                   <div style="width: 100%;float: left">
                     <span style="width: 8.3%; float: left">
-                      <img :src="headSrc" class="commentHead">
+                      <img :src="item.src" class="commentHead">
                     </span>
                     <span style="float: left" class="commentName">
-                      YuanCZ
+                      {{item.user}}
                     </span>
                   </div>
-                  <p class="commentText">你用两个脑子思考？</p>
-
+                  <p class="commentText">{{item.content}}</p>
                   <div style="width: 100%" class="commentTime">
                     <div style="margin-left: 8.3%">
-                      <p>我是时间</p>
-                    </div>
-                  </div>
-                  <el-divider></el-divider>
-                </li>
-                <li>
-                  <div style="width: 100%;float: left">
-                    <span style="width: 8.3%; float: left">
-                      <img :src="headSrc" class="commentHead">
-                    </span>
-                    <span style="float: left" class="commentName">
-                      YuanCZ
-                    </span>
-                  </div>
-                  <p class="commentText">你用两个脑子思考？</p>
-                  <div style="width: 100%" class="commentTime">
-                    <div style="margin-left: 8.3%">
-                      <p>我是时间</p>
+                      <p>{{item.time}}</p>
                     </div>
                   </div>
                   <el-divider></el-divider>
@@ -150,6 +132,17 @@
       components: {NavBar},
       data(){
           return{
+            commentItem: [{
+              src: require("../assets/head.jpg"),
+              user: 'YuanCZ',
+              content: '你用两个脑子思考？',
+              time: '2020-8-13'
+            }, {
+              src: require("../assets/head.jpg"),
+              user: '宋友',
+              content: '你真幸运',
+              time: '2020-8-14'
+              }],
             show3: false,
             comment: '',
             activities: [{
