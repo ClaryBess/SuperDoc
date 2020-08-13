@@ -1,11 +1,11 @@
 <template>
- <div class="docs" >
-      <div class="docs-item">
-        <img class="docimg" src="@/assets/mes.svg" @click="itemClick">
-        <div class="docs-info" @click="itemClick">
+ <div class="mes" >
+      <div class="mes-item">
+        <img class="mesimg" src="@/assets/mes.svg" @click="itemClick">
+        <div class="mes-info" @click="itemClick">
           <p>{{ mesItem.content }}</p>
         </div>
-        <img class="img" src="@/assets/删除.svg" @click="deleteMes">
+        <img class="messmallimg" src="@/assets/删除.svg" @click="deleteMes">
       </div>
   </div>
 
@@ -39,11 +39,11 @@ export default {
 </script>
 
 <style>
-  .docs {
+  .mes {
     position: relative;
     padding: 10px;
   }
-  .docs-item {
+  .mes-item {
     display: flex;
     position: relative;
     border-radius: 20px;
@@ -51,20 +51,20 @@ export default {
     background-color: #f4f7f8;
   }
 
-  .docimg {
+  .mesimg {
     width: 50px;
     padding: 10px;
   }
 
-  .img {
-    position:fixed;
-    right: 200px;
+  .messmallimg {
+    position: absolute;
+    right: 30px;
     width: 30px;
     padding-top: 20px;
     padding-right: 10px;
   }
 
-  .docs-info {
+  .mes-info {
     font-size: 16px;
     position: relative;
     padding-left: 0px;
@@ -75,7 +75,7 @@ export default {
     text-align: left;
   }
 
-  .docs-info p {
+  .mes-info p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

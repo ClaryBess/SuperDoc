@@ -27,8 +27,8 @@
 
 <style scoped>
   .docs {
-    display: flex; 
-    flex-wrap: wrap;
-    padding: 10px;
+    /* display: flex; 
+    flex-wrap: wrap; */
+    padding: 5px;
   }
 </style>

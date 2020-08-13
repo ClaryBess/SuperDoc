@@ -14,12 +14,10 @@
           <el-menu-item index="2" @click="itemClick2">
             <span slot="title">团队文档</span>
           </el-menu-item>
-          <el-menu-item index="4" @click="itemClick4">
+          <el-menu-item index="3" @click="itemClick3">
             <span slot="title">解散团队</span>
           </el-menu-item>
-
         </el-menu>
-
       </el-col>
     </el-row>
   </div>
@@ -40,14 +38,14 @@ export default {
   },
   methods: {
     itemClick1() {
-      this.$router.push("1")
+      this.$router.push("/team/1")
       console.log("团队信息")
     },
     itemClick2() {
-      this.$router.push("teamdoc")
+      this.$router.push("/team/teamdoc")
       console.log("团队文档")
     },
-    itemClick4() {
+    itemClick3() {
       this.$confirm("确定解散该团队吗?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",

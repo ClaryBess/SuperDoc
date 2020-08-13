@@ -10,7 +10,7 @@
         <SideBar currentindex="5"></SideBar>
       </el-aside>
       <el-main style="width: 80%">
-        <delete-all style="float:right;margin-top:40px;margin-right=40px"></delete-all>
+        <delete-all class="all-delete"></delete-all>
         <h2 class="h2color">回收站</h2>
         <!-- <doc-list :docs="recycleDocs"></doc-list> -->
         <doc-list :docs="Docs"></doc-list>
@@ -56,6 +56,102 @@ export default {
           id: "4",
           title: "sisisi",
         },
+        {
+          id: "1",
+          title: "第111",
+        },
+        {
+          id: "2",
+          title: "第二个hhhhh文档",
+        },
+        {
+          id: "3",
+          title: "第三个文dashdkjlashdjkl档",
+        },
+        {
+          id: "4",
+          title: "sisisi",
+        },
+        {
+          id: "1",
+          title: "第111",
+        },
+        {
+          id: "2",
+          title: "第二个hhhhh文档",
+        },
+        {
+          id: "3",
+          title: "第三个文dashdkjlashdjkl档",
+        },
+        {
+          id: "4",
+          title: "sisisi",
+        },
+        {
+          id: "1",
+          title: "第111",
+        },
+        {
+          id: "2",
+          title: "第二个hhhhh文档",
+        },
+        {
+          id: "3",
+          title: "第三个文dashdkjlashdjkl档",
+        },
+        {
+          id: "4",
+          title: "sisisi",
+        },
+        {
+          id: "1",
+          title: "第111",
+        },
+        {
+          id: "2",
+          title: "第二个hhhhh文档",
+        },
+        {
+          id: "3",
+          title: "第三个文dashdkjlashdjkl档",
+        },
+        {
+          id: "4",
+          title: "sisisi",
+        },
+        {
+          id: "1",
+          title: "第111",
+        },
+        {
+          id: "2",
+          title: "第二个hhhhh文档",
+        },
+        {
+          id: "3",
+          title: "第三个文dashdkjlashdjkl档",
+        },
+        {
+          id: "4",
+          title: "sisisi",
+        },
+        {
+          id: "1",
+          title: "第111",
+        },
+        {
+          id: "2",
+          title: "第二个hhhhh文档",
+        },
+        {
+          id: "3",
+          title: "第三个文dashdkjlashdjkl档",
+        },
+        {
+          id: "4",
+          title: "sisisi",
+        },
       ],
     };
   },
@@ -64,5 +160,10 @@ export default {
 <style>
 .h2color {
   color: #7093ff;
+}
+.all-delete {
+  position: absolute;
+  right:17%;
+  height: 15%;
 }
 </style>
