@@ -23,6 +23,8 @@ import TeamDoc from "../workspace/teamview/TeamDoc";
 
 import TemLib from "../workspace/temLib/TemLib";
 
+import Message from "../workspace/message/Message";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -124,6 +126,12 @@ const routes = [
     path: '/team/teamdoc',
     name: 'teamdoc',
     component: TeamDoc
+  },
+  //消息页面
+  {
+    path: '/message',
+    name: 'message',
+    component: Message
   },
   {
     path: '/change',
