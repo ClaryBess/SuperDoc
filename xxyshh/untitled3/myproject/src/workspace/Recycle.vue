@@ -13,7 +13,7 @@
         <delete-all class="all-delete"></delete-all>
         <h2 class="h2color">回收站</h2>
         <!-- <doc-list :docs="recycleDocs"></doc-list> -->
-        <doc-list :docs="Docs"></doc-list>
+        <delete-list :docs="Docs"></delete-list>
       </el-main>
       <right-bar></right-bar>
     </el-container>
@@ -23,7 +23,7 @@
 <script>
 import NavBar from "../components/NavBar";
 import SideBar from "./SideBar";
-import DocList from "./DocList";
+import DeleteList from "./DeleteList";
 import RightBar from "./RightBar";
 import DeleteAll from "./DeleteAll";
 
@@ -32,7 +32,7 @@ export default {
   components: {
     NavBar,
     SideBar,
-    DocList,
+    DeleteList,
     RightBar,
     DeleteAll,
   },
