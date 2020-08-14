@@ -37,21 +37,25 @@ export default {
           id: "1",
           content: "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
           isRead: true,
+          type: 'invitation'
         },
         {
           id: "2",
           content: "不许笑",
           isRead: false,
+          type: 'invitation'
         },
         {
           id: "3",
           content: "wwwwwww",
           isRead: false,
+          type: 'common'
         },
         {
           id: "4",
           content: "要加入我们嘛！",
           isRead: true,
+          type: 'invitation'
         },
       ],
       NowMess: [],
