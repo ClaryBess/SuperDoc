@@ -58,7 +58,6 @@
 <script>
     import NavBar from "./NavBar";
     import NavBarOrigin from "./NavBarOrigin";
-
     export default {
       name: "Register1",
       components: {NavBar, NavBarOrigin},

@@ -82,7 +82,7 @@
                 <div class="demo-drawer__content">
                   <el-form :model="formmember">
                     <el-form-item label=" 请输入用户ID或者邮箱：" class="drawer-item-menber">
-                      <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
+                      <el-input placeholder="请输入内容" v-model="formmember.input3" class="input-with-select">
                         <el-select v-model="select" slot="prepend" placeholder="请选择">
                           <el-option label="用户ID" value="1"></el-option>
                           <el-option label="用户邮箱" value="2"></el-option>
@@ -121,7 +121,6 @@ import TeamSideBar1 from "./TeamSideBar1";
 import DocList from "../DocList";
 import MemberList from "./MemberList";
 import RightBar from "../RightBar";
-
 export default {
   name: "TeamView1",
   components: { NavBar, TeamSideBar1, DocList, MemberList, RightBar },
@@ -188,9 +187,9 @@ export default {
       form: {
         name: "",
       },
-
-      input3: "",
-
+      formmember: {
+        input3: "",
+      },
       timer: null,
     };
   },
@@ -203,7 +202,7 @@ export default {
       if (this.loading) {
         return;
       }
-      this.$confirm("确定要提交表单吗？")
+      this.$confirm("确定提交吗？")
         .then((_) => {
           this.loading = true;
           this.timer = setTimeout(() => {
@@ -220,7 +219,7 @@ export default {
       if (this.loading) {
         return;
       }
-      this.$confirm("确定要提交表单吗？")
+      this.$confirm("确定提交吗？")
         .then((_) => {
           this.loading = true;
           this.timer = setTimeout(() => {
