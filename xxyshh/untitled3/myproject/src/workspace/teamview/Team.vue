@@ -119,6 +119,7 @@ export default {
   },
   created() {
     this.fetchList();
+    sessionStorage.setItem('teamL', null);
   },
   methods:{
     submitForm(formName) {

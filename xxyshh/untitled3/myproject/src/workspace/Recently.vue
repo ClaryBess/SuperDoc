@@ -99,6 +99,7 @@ export default {
   },
   created() {
     this.fetchList();
+    sessionStorage.setItem('teamL', null);
   },
 };
 </script>

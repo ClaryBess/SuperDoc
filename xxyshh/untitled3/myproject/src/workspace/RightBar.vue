@@ -21,7 +21,15 @@ export default {
   name: "RightBar",
   methods: {
     newDoc() {
-      this.$router.push("/Edit");
+      if(this.$route.name === 'teamview1' || this.$route.name === 'teamview2'){
+        this.$router.push("/editTeam/" + this.$route.params.id + '/0');
+      }
+      else if(this.$route.name === 'teamdoc' || this.$route.name === 'teamdoc2'){
+        this.$router.push("/editTeam/" + this.$route.params.id + '/0');
+      }
+      else{
+        this.$router.push("/edit/0");
+      }
     },
     intoTemLib() {
       this.$router.push("/temlib");

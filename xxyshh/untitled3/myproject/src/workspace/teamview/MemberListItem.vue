@@ -3,9 +3,9 @@
     <div class="docs-item">
       <!-- 展示图片为成员头像 -->
       <!-- <img class="docimg" :src="memberItem.url" @click="itemClick"> -->
-      <img class="docimg" src="@/assets/head.jpg" @click="itemClick" />
+      <img class="docimg" :src='memberItem.profileUrl' @click="itemClick" />
       <div class="docs-info" @click="itemClick">
-        <p>{{memberItem.name}}</p>
+        <p>{{memberItem.userName}}</p>
       </div>
       <slot name="deleteIcon">
         <img class="smallimg1" src="@/assets/删除.svg" @click="deleteMem" />
@@ -39,7 +39,7 @@ export default {
     },
     deleteMem() {
       var _this=this;
-      axios.post("http://127.0.0.1:8081/team/quit/" + this.$route.params.id, this.memberItem.id)
+      axios.post("http://127.0.0.1:8081/team/quit/" + this.$route.params.id, this.memberItem.userName)
         .then(function (response) {
           _this.$message({
             message: '已删除成员',

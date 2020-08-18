@@ -41,11 +41,11 @@ export default {
   },
   methods: {
     itemClick1() {
-      this.$router.push("/teamleader/:id")
+      this.$router.push("/teamleader/" + this.$route.params.id)
       console.log("团队信息")
     },
     itemClick2() {
-      this.$router.push("/teamleader/teamdoc/:id")
+      this.$router.push("/teamleader/teamdoc/"  + this.$route.params.id)
       console.log("团队文档")
     },
     itemClick3() {
@@ -69,9 +69,11 @@ export default {
               console.log(this.$route.params.id);
               console.log(this.userID);
               axios
-                .post("http://127.0.0.1:8081/team/disband", this.userID, this.$route.params.id)
-                .then((res) => {
-                  console.log(res);
+                .post("http://127.0.0.1:8081/team/delete/" + this.$route.params.id)
+                .then(function (response) {
+                  if(response.data.status === 200){
+                    _this.$router.push('/team')
+                  }
                 })
                 .catch((err) => {
                   console.log(err);
