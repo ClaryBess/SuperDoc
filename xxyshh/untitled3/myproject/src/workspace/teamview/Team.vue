@@ -90,15 +90,15 @@ export default {
       headUrl: require("@/assets/head.jpg"),
       teams: [
         {
-          id: '1',
-          title: '湍湍湍湍',
-          leader:'我',
+          teamID: '1',
+          teamName: '湍湍湍湍',
+          leaderName:'我',
           leaderID: '123'
         },
         {
-          id: '2',
-          title: 'mmmmm',
-          leader:'美羊羊',
+          teamID: '2',
+          teamName: 'mmmmm',
+          leaderName:'美羊羊',
           leaderID: '456'
         },
       ],
@@ -122,15 +122,17 @@ export default {
   },
   methods:{
     submitForm(formName) {
-      dialogFormVisible = false;
+      this.dialogFormVisible = false;
       this.$refs[formName].validate((valid) => {
         if (valid) {
           var _this=this
           var userL=JSON.parse(sessionStorage.getItem("userL"))
-          axios.post("http://127.0.0.1:8081/#",{
+          axios.post("http://127.0.0.1:8081/team/addTeam",{
             userID: userL.userID,
-            teamName: _this.form.name,
-            teamInfo: _this.form.info
+            teamName: this.form.name,
+            teamInfo: this.form.info,
+            memberNumber: 1,
+            privilege: 1111
           })
             .then(function (response) {
               if(response.data.status === 200){
@@ -138,7 +140,9 @@ export default {
                   message: '新建团队成功',
                   type: 'success'
                 });
-                _this.$router.push('/teamleader/' + response.data.data);
+                var team = JSON.parse(JSON.stringify(response.data.data));
+                console.log(JSON.stringify(response.data.data));
+                _this.$router.push('/teamleader/' + team.teamID);
               }
               else {
                 _this.$message({
@@ -156,30 +160,26 @@ export default {
         }
       });
     },
-
     fetchList() {
-      this.userL = JSON.parse(sessionStorage.getItem("userL"));
-      console.log(this.userL);
-      this.userID=this.userL.userID;
+      var userL = JSON.parse(sessionStorage.getItem("userL"));
+      var _this = this;
       // 加入的团队列表
-      axios.post("http://127.0.0.1:8081/#", this.userID)
+      axios.post("http://127.0.0.1:8081/team/inTeams", userL.userID)
         .then((res) => {
-          console.log(res);
           if (res.data == "") {
-            this.isNULL = true;
-          } else {
-            this.isNULL = false;
-            var teamL = res.data;
-            var _this = this;
-            _this.teams = teamL;
-            console.log(_this.teams);
+            _this.isNULL = true;
           }
+          else {
+            _this.isNULL = false;
+          }
+          var teamList = res.data;
+          _this.teams = teamList;
         })
         .catch((err) => {
           console.log(err);
         });
     },
-  },
+  }
 };
 </script>
 
