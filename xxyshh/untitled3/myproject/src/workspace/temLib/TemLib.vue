@@ -31,23 +31,28 @@ export default {
       temsList: [
         {
           id: '1',
-          title: '1111'
+          title: '1111',
+          picUrl: require("@/assets/预览图1.png")
         },
         {
           id: '2',
-          title: '第二张图片'
+          title: '第二张图片',
+          picUrl: require("@/assets/预览图1.png")
         },
         {
           id: '3',
-          title: '3333'
+          title: '3333',
+          picUrl: require("@/assets/预览图1.png")
         },
         {
           id: '4',
-          title: 'sisisisi'
+          title: 'sisisisi',
+          picUrl: require("@/assets/预览图1.png")
         },
         {
           id: '5',
-          title: 'eeee'
+          title: 'eeee',
+          picUrl: require("@/assets/预览图1.png")
         },
       ]
     };

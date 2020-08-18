@@ -2,7 +2,7 @@
   <div class="goods-item" @click="itemClick">
     <el-card class="box-card" shadow="always">
         <!-- <img :src="TemItem.img" alt=""> -->
-        <img src="@/assets/预览图1.png" alt />
+        <img :src=TemItem.picUrl alt />
         <div class="goods-info">
           <p>{{TemItem.title}}</p>
         </div>

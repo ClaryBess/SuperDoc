@@ -34,11 +34,15 @@ export default {
       teams: [
         {
           id: '1',
-          title: '湍湍湍湍'
+          title: '湍湍湍湍',
+          leader:'美羊羊',
+          member: ['喜羊羊','慢羊羊','灰太狼']
         },
         {
           id: '2',
-          title: 'mmmmm'
+          title: 'mmmmm',
+          leader:'美羊羊',
+          member: ['喜羊羊','慢羊羊','灰太狼']
         },
       ],
     };

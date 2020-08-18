@@ -11,7 +11,7 @@
       </el-aside>
       <el-main style="width: 80%">
         <h2 class="h2color">最近浏览的文档</h2>
-        <!-- <doc-list :docs="showDocs"></doc-list> -->
+        <!-- <doc-list :docs="Docs"></doc-list> -->
         <doc-list :docs="Docs"></doc-list>
       </el-main>
       <right-bar></right-bar>
@@ -35,6 +35,7 @@ export default {
         {
           id: "1",
           title: "第111",
+          isCollected: true
         }
       ],
     };

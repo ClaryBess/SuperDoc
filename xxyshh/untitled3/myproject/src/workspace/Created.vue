@@ -35,14 +35,17 @@ export default {
         {
           id: '1',
           title: "第111",
+          isCollected: false
         },
         {
           id: '2',
           title: "第二个hhhhh文档",
+          isCollected: true
         },
         {
           id: '3',
           title: "第三个文dashdkjlashdjkl档",
+          isCollected: false
         }
       ]
     };

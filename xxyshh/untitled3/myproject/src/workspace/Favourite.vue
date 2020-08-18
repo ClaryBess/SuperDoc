@@ -11,7 +11,7 @@
       </el-aside>
       <el-main style="width: 80%">
         <h2 class="h2color">收藏的文档</h2>
-        <!-- <doc-list :docs="collectedDocs"></doc-list> -->
+        <!-- 此处传入的是收藏的文档数组 -->
         <doc-list :docs="Docs"></doc-list>
       </el-main>
       <right-bar></right-bar>
@@ -35,26 +35,32 @@ export default {
         {
           id: '1',
           title: "第111",
+          isCollected: true
         },
         {
           id: '2',
           title: "第二个hhhhh文档",
+          isCollected: true
         },
         {
           id: '3',
           title: "第三个文dashdkjlashdjkl档",
+          isCollected: true
         },
         {
           id: '4',
           title: "四ssssswwwwwwwwwwwwwwwss",
+          isCollected: true
         },
         {
           id: '5',
           title: "第五wwuwuwuwuwuwwwwwwww个文档",
+          isCollected: true
         },
         {
           id: '6',
           title: "第六",
+          isCollected: true
         }
       ]
     };
