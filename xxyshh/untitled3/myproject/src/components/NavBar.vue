@@ -11,6 +11,9 @@
         <router-link to="/message">消息</router-link>
         <!-- <a href="#">消息</a> -->
       </li>
+      <li>
+        <router-link to="/team">团队</router-link>
+      </li>
     </ul>
 
     <div :class="search">
@@ -20,7 +23,7 @@
     <div class="right">
       <ul class="rightNav">
         <li class="dropdown">
-          <router-link to="HomePage">
+          <router-link to="/homepage">
               <img :src='headSrc' class="userhead" />
           </router-link>
         </li>

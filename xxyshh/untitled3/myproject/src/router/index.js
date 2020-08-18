@@ -8,9 +8,9 @@ import Homepage from "../components/Homepage";
 import HomepageEdit from "../components/HomepageEdit";
 import Welcome from "../components/Welcome";
 
-import WorkSpace from "../workspace/WorkSpace";
+// import WorkSpace from "../workspace/WorkSpace";
 import Recently from "../workspace/Recently";
-import Favourite from "../workspace/Favourite";
+import Collect from "../workspace/Collect";
 import Created from "../workspace/Created";
 import Team from "../workspace/teamview/Team";
 import Recycle from "../workspace/Recycle";
@@ -64,7 +64,7 @@ const routes = [
   {
     path: '/workspace',
     name: 'workspace',
-    component: WorkSpace
+    component: Recently
   },
   {
     path: '/recently',
@@ -72,9 +72,9 @@ const routes = [
     component: Recently
   },
   {
-    path: '/favourite',
-    name: 'favourite',
-    component: Favourite
+    path: '/collect',
+    name: 'collect',
+    component: Collect
   },
   {
     path: '/created',
@@ -143,17 +143,17 @@ const routes = [
     component: Message
   },
   {
-    path: '/change',
+    path: '/change/:id',
     name: 'change',
     component: Change
   },
   {
-    path: '/editTeam',
+    path: '/editTeam/:tid',
     name: 'editTeam',
     component: EditTeamDoc
   },
   {
-    path: '/changeTeam',
+    path: '/changeTeam/:id',
     name: 'changeTeam',
     component: ChangeTeamDoc
   },

@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .rightBar {
   width: 5%;
   float: right;

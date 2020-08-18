@@ -4,7 +4,7 @@
         <img class="teamsimg" src="@/assets/团队.svg" @click="itemClick">
         <div class="teams-info" @click="itemClick">
           <p>团队名称：{{teamsItem.title}}</p>
-          <p>创建者：</p>
+          <p>创建者：{{teamsItem.leader}} </p>
         </div>
       </div>
   </div>

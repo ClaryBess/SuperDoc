@@ -1,6 +1,11 @@
 <template>
   <div class="docs">
-    <doc-list-item v-for="item in docs" :docs-item="item" :key="item.id">
+    <doc-list-item v-for="item in docs" 
+    :docs-item="item" 
+    :key="item.docID" 
+    :currentview="currentview"
+    :userID="userID"
+    >
     </doc-list-item>
   </div>
 </template>
@@ -20,7 +25,17 @@
         default() {
           return []
         }
-      }
+      },
+      //当前界面
+      currentview: {
+        type: Number,
+        default:0
+      },
+      //当前用户id
+      userID: {
+      type: Number,
+      default: 0,
+      },
     }
   }
 </script>

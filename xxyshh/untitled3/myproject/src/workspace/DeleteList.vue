@@ -1,6 +1,10 @@
 <template>
   <div class="docs">
-    <delete-list-item v-for="item in docs" :docs-item="item" :key="item.id">
+    <delete-list-item v-for="item in docs" 
+    :docs-item="item" 
+    :key="item.docID"
+    :userID="userID"
+    >
     </delete-list-item>
   </div>
 </template>
@@ -20,7 +24,12 @@
         default() {
           return []
         }
-      }
+      },
+      //当前用户id
+      userID: {
+      type: Number,
+      default: 0,
+      },
     }
   }
 </script>

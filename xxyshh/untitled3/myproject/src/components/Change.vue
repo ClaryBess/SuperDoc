@@ -14,9 +14,9 @@
               <p>你可以使用“模板”功能来快速创建文档</p>
             </div>
             <div style="margin-top: 40px;">
-              <el-form :model="docForm" label-width="80px">
+              <el-form :model="docForm" label-width="80px" :rules="rule" ref="docForm">
                 <el-row>
-                  <el-form-item label="文档标题">
+                  <el-form-item label="文档标题" prop="title">
                     <el-input v-model="docForm.title"></el-input>
                   </el-form-item>
                 </el-row>
@@ -32,8 +32,8 @@
                   <vue-ueditor-wrap v-model="docForm.doc" :config="ueConfig"></vue-ueditor-wrap>
                 </div>
                 <el-form-item class="button-row">
-                  <el-button type="primary" @click="onSubmit" >提交</el-button>
-                  <el-button style="margin-left: 30px">取消</el-button>
+                  <el-button type="primary" @click="onSubmit('docForm')" >提交</el-button>
+                  <el-button style="margin-left: 30px" @click="cancelEdit">取消</el-button>
                 </el-form-item>
               </el-form>
             </div>
@@ -49,6 +49,7 @@
   import UEditor from "./UEditor";
   import NavBar from "./NavBar";
   import VueUeditorWrap from "vue-ueditor-wrap";
+  import axios from "axios";
     export default {
       name: "Change",
       components: {UEditor, NavBar, VueUeditorWrap},
@@ -58,9 +59,15 @@
           docForm: {
             title: "这里写旧标题",
             doc: "",
-            privilege: ['可查看']
+            privilege: []
           },
-          ueConfig: {
+          rule:{
+            title: [
+              { required: true, message: '请输入标题', trigger: ['blur','change']},
+              { min: 1, max: 25, message: '标题长度在25字以内', trigger: ['blur','change']}
+            ]
+          },
+          ueConfig:{
             toolbars: [
               [
                 'source', // 源代码
@@ -107,7 +114,7 @@
                 'fontsize', // 字号
                 // 'paragraph', // 段落格式
                 'simpleupload', // 单图上传
-                'insertimage', // 多图上传
+                //'insertimage', // 多图上传
                 'edittable', // 表格属性
                 'edittd', // 单元格属性
                 // 'link', // 超链接
@@ -161,14 +168,120 @@
             initialFrameWidth: "100%",
             // 上传文件接口
             enableAutoSave: true,
-            autoHeightEnabled: false
+            autoHeightEnabled:false,
+            serverUrl: "http://127.0.0.1:8081"
           }
+        }
+      },
+      methods: {
+        beginEdit(){
+          var _this=this;
+          axios.post("http://127.0.0.1:8081/doc/beginEdit/" + this.$route.params.id)
+            .then(function (response) {
+              if(response.data.status === 200){
+                console.log('set editable to 0');
+              }
+            })
+            .catch(function (error) { // 请求失败处理
+              console.log(error);
+            });
+        },
+        onSubmit(formName) {
+          this.$refs[formName].validate((valid) => {
+            if (valid) {
+              var _this=this
+              var pri = 0;
+              for(var i = 0; i < this.docForm.privilege.length; i++){
+                if(this.docForm.privilege[i] === '可查看'){
+                  pri += 1000;
+                }
+                else if(this.docForm.privilege[i] === '可编辑'){
+                  pri += 100;
+                }
+                else if(this.docForm.privilege[i] === '可评论'){
+                  pri += 10;
+                }
+                else if(this.docForm.privilege[i] === '可分享'){
+                  pri += 1;
+                }
+              }
+              var userL=JSON.parse(sessionStorage.getItem("userL"))
+              axios.post("http://127.0.0.1:8081/doc/edit",{
+                //权限是一个四位整数，0代表仅自己，1代表所有人，2代表仅团队；可查看、可编辑、可评论、可分享
+                docID: this.$route.params.id,
+                userID: userL.userID,
+                title: this.docForm.title,
+                content: this.docForm.doc,
+                privilege: pri,
+                editable: 1
+              })
+                .then(function (response) {
+                  // console.log(response.data.status)
+                  if(response.data.status === 200){
+                    //alert("编辑文档成功")
+                    _this.$message({
+                      message: '编辑文档成功',
+                      type: 'success'
+                    })
+                    _this.$router.push('/detail/' + _this.$route.params.id)
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error)
+                })
+            } else {
+              console.log('error submit!!');
+              return false;
+            }
+          });
+        },
+        getDoc: function () {
+          var _this=this;
+          this.axios.post("http://127.0.0.1:8081/doc/get/" + this.$route.params.id)
+            .then(function (response) {
+              if(response.data.status === 200){
+                var docL = JSON.parse(JSON.stringify(response.data.data));
+                _this.docForm.title = docL.title;
+                _this.docForm.doc = docL.content;
+                console.log('pri: '+(docL.privilege%1000)/100)
+                while(_this.docForm.privilege.length > 0)
+                  _this.docForm.privilege.pop();
+                if(docL.privilege/1000 > 0.5){
+                  _this.docForm.privilege.push('可查看');
+                }
+                if((docL.privilege%1000)/100 > 0.5){
+                  _this.docForm.privilege.push('可编辑');
+                }
+                if((docL.privilege%100)/10 > 0.5){
+                  _this.docForm.privilege.push('可评论');
+                }
+                if(docL.privilege%10 > 0.5){
+                  _this.docForm.privilege.push('可分享');
+                }
+              }
+            })
+            .catch(function (error) { // 请求失败处理
+              console.log(error);
+            });
+        },
+        cancelEdit(){
+          var _this=this;
+          axios.post("http://127.0.0.1:8081/doc/endEdit/" + this.$route.params.id)
+            .then(function (response) {
+              if(response.data.status === 200){
+                _this.$router.go(-1)
+              }
+            })
+            .catch(function (error) { // 请求失败处理
+              console.log(error);
+            });
         }
       },
       mounted () {
         console.log(this.$route.name);
         let _this = this
         window.onbeforeunload = function (e) {
+          _this.cancelEdit();
           if (_this.$route.name == 'change') {
             e = e || window.event;
             if (e) {
@@ -179,6 +292,13 @@
             window.onbeforeunload = null
           }
         }
+      },
+      created() {
+        this.getDoc();
+        this.beginEdit();
+      },
+      destroyed() {
+        this.cancelEdit();
       }
     }
 </script>

@@ -1,52 +1,64 @@
 <template>
   <el-container>
+    <!-- 头部 -->
     <el-header>
       <div>
         <NavBar :headSrc="headUrl"></NavBar>
       </div>
     </el-header>
+    <!-- 内容 -->
     <el-container>
+      <!-- 左栏 -->
       <el-aside width="15%">
         <SideBar currentindex="4"></SideBar>
       </el-aside>
+      <!-- 中间 -->
       <el-main style="width: 80%">
-        <div class="newteam"><el-button type="text" @click="dialogFormVisible = true">创建团队</el-button></div>
-        <el-dialog title="创建团队" :visible.sync="dialogFormVisible" >
-          <el-form :model="form" :rules="rules" ref="form" class="form" >
+        <!-- 创建团队 -->
+        <el-button class="newteam" type="text" @click="dialogFormVisible = true">
+          创建团队
+        </el-button>
+          <!-- 创建表单 -->
+          <el-dialog title="创建团队" :visible.sync="dialogFormVisible" >
+            <el-form :model="form" status-icon :rules="rules" ref="form" class="form" >
+              <el-form-item class="item" label="团队名称："  prop="name" :label-width="formLabelWidth">
+                <el-input placeholder="请输入2-10个字符" v-model="form.name" ></el-input>
+              </el-form-item>
 
-            <el-form-item class="item" label="团队名称："  prop="name" :label-width="formLabelWidth">
-              <el-input placeholder="请输入2-10个字符" v-model="form.name" ></el-input>
-            </el-form-item>
+              <el-form-item class="item" label=" 团队简介：" :label-width="formLabelWidth">
+                <el-input
+                  type="textarea"
+                  :rows="9"
+                  class="teaminfo"
+                  v-model="form.info"
+                  autocomplete="off"
+                ></el-input>
+              </el-form-item>
 
-            <el-form-item class="item" label=" 团队简介：":label-width="formLabelWidth">
-              <el-input
-                type="textarea"
-                :rows="4"
-                style="margin-top: 10px"
-                v-model="form.info"
-                autocomplete="off"
-              ></el-input>
-            </el-form-item>
+              <el-form-item class="item" label=" 添加成员：" :label-width="formLabelWidth">
+                <el-input placeholder="请输入ID" v-model="form.input3" class="input-with-select">
+                </el-input>
+              </el-form-item>
+            </el-form>
 
-            <el-form-item class="item" label=" 添加成员：" :label-width="formLabelWidth">
-              <el-input placeholder="请输入内容" v-model="form.select" class="input-with-select">
-                <el-select style="width: 120px"  v-model="form.select"  slot="prepend" placeholder="请选择">
-                  <el-option label="用户ID" value="xxxxxx"></el-option>
-                  <el-option label="用户邮箱" value="xx@xx.xx"></el-option>
-                </el-select>
-              </el-input>
-            </el-form-item>
-
-          </el-form>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false" style="margin-right: 20px">取 消</el-button>
-            <el-button type="primary" @click="submitForm('form')">确 定</el-button>
-          </div>
-        </el-dialog>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="dialogFormVisible = false" class="btn">
+                取 消
+              </el-button>
+              <el-button type="primary" @click="submitForm('form')">
+                确 定
+              </el-button>
+            </div>
+          </el-dialog>
+        <!-- 团队列表 -->
         <h2 class="h2color">加入的团队</h2>
         <!-- <teams-list :teams="joinedteams"></teams-list> -->
         <teams-list :teams="teams"></teams-list>
+        <div style="margin-left: 41%; margin-top: 8%" v-show="this.isNULL">
+          <div><img src="../../assets/空.png" style=" width: 110px"></div>
+        </div>
       </el-main>
+      <!-- 右栏 -->
       <right-bar></right-bar>
     </el-container>
   </el-container>
@@ -57,21 +69,26 @@ import NavBar from "@/components/NavBar";
 import SideBar from "../SideBar";
 import TeamsList from "./TeamsList";
 import RightBar from "../RightBar";
+import axios from "axios";
+
 export default {
   name: "Team",
-  components: { NavBar, SideBar, TeamsList,RightBar },
+  components: {
+    NavBar,
+    SideBar,
+    TeamsList,
+    RightBar
+  },
   data() {
     var checkName = (rule, value, callback) => {
       if (value == '') {
         return callback(new Error('用户名不能为空'));
       }else if(value.length>10){
         callback(new Error('用户名过长'));
-      } else {
-        if (value.length<3) {
+      }else if (value.length<3) {
           callback(new Error('用户名过短'));
-        } else {
+      }else {
           callback();
-        }
       }
     };
     return {
@@ -79,97 +96,136 @@ export default {
       teams: [
         {
           id: '1',
-          title: '湍湍湍湍'
+          title: '湍湍湍湍',
+          leader:'我',
+          member: ['喜羊羊','慢羊羊','灰太狼']
         },
         {
           id: '2',
-          title: 'mmmmm'
+          title: 'mmmmm',
+          leader:'美羊羊',
+          member: ['喜羊羊','慢羊羊','灰太狼']
         },
       ],
       dialogTableVisible: false,
       dialogFormVisible: false,
-
       form: {
         name: '',
         info: '',
         input3:'',
-        select: "",
       },
       rules: {
         name: [
           { validator: checkName, trigger: 'blur' }
         ]
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      isNULL: false,
     };
   },
+  created() {
+    this.fetchList();
+  },
   methods:{
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$router.push('Register2')
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
-    },
     submitForm(formName) {
       dialogFormVisible = false;
       if (this.loading) {
         return;
       }
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$confirm("确定提交吗？")
-            .then((_) => {
-              this.loading = true;
-              this.timer = setTimeout(() => {
-                done();
-                // 动画关闭需要一定的时间
-                setTimeout(() => {
-                  this.loading = false;
-                }, 400);
-              }, 2000);
-            })
-            .catch((_) => {});
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
+      this.$refs[formName].validate(
+        (valid) => {
+          if (valid) {
+            this.$confirm("确定提交吗？")
+              .then((_) => {
+                this.loading = true;
+                this.timer = setTimeout(() => {
+                  done();
+                  // 动画关闭需要一定的时间
+                  setTimeout(() => {
+                    this.loading = false;
+                  }, 400);
+                }, 2000);
+              })
+              .catch((_) => {});
+          } else {
+            // console.log('error submit!!');
+            return false;
+          }
       });
     },
-  },
 
+    fetchList() {
+      this.userL = JSON.parse(sessionStorage.getItem("userL"));
+      console.log(this.userL);
+      this.userID=this.userL.userID;
+      axios.post("http://127.0.0.1:8081/#", this.userID)
+        .then((res) => {
+          console.log(res);
+          if (res.data == "") {
+            this.isNULL = true;
+          } else {
+            this.isNULL = false;
+            var teamL = res.data;
+            var _this = this;
+            _this.teams = teamL;
+            console.log(_this.teams);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 
-<style>
-  .h2color {
-    color: #7093ff;
-  }
+<style scoped>
   .newteam{
-    width: 120px;
+    /* width: 120px;
     float: right;
-    margin-top:27px;
+    margin-top:27px; */
+    position: absolute;
+    right:17%;
+    height: 15%;
   }
+
   .form{
     margin-left: 3%;
     margin-right: 5%;
   }
+
+  .teaminfo{
+    margin-top: 10px;
+  }
+
   .el-select .el-input {
     width: 120px;
   }
+
   .input-with-select .el-input-group__prepend {
     background-color: #fff;
   }
+
+  .formslct{
+    width: 120px;
+  }
+
   .item {
     font-weight: bold;
     padding-bottom: 30px;
   }
+
   .dialog-footer{
     margin-right: 50px;
     margin-bottom: 30px;
     margin-top: -20px;
+  }
+
+  .btn{
+    margin-right: 20px;
+  }
+
+  .h2color {
+    color: #3369e7;
   }
 </style>

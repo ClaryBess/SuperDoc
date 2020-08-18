@@ -1,26 +1,29 @@
 {
   "name": "myproject",
   "version": "1.0.0",
+  "private": true,
   "description": "A Vue.js project",
   "author": "",
-  "private": true,
   "scripts": {
+    "build": "node build/build.js",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "build": "node build/build.js"
+    "start": "npm run dev"
   },
   "dependencies": {
     "animate.css": "^4.1.0",
     "animejs": "^3.2.0",
     "element-ui": "^2.13.2",
+    "qs": "^6.9.4",
     "slider-verification-code": "^1.0.5",
     "vue": "^2.5.2",
+    "vue-pin": "^1.0.6",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.4.2",
     "vue-ueditor-wrap": "^2.4.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
+    "axios": "^0.19.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
@@ -48,6 +51,7 @@
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
+    "vue-cli-plugin-axios": "0.0.4",
     "vue-loader": "^13.3.0",
     "vue-particles": "^1.0.9",
     "vue-style-loader": "^3.0.1",
@@ -57,18 +61,18 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
+  "vue": {
+    "devServer": {
+      "open": true
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
   ],
-  "vue": {
-    "devServer": {
-      "open": true
-    }
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
   }
 }
