@@ -83,6 +83,7 @@
                 type: 'success'
               })
               sessionStorage.setItem('userL', JSON.stringify(response.data.data))
+              sessionStorage.setItem('teamL', null);
               _this.$router.push('WorkSpace')
             }else {
               _this.$message({

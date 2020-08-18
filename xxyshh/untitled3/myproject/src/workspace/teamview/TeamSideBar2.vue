@@ -24,8 +24,11 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "TeamSideBar2",
+  inject: ["reload"],
   data() {
     return {
     };
@@ -38,32 +41,65 @@ export default {
   },
   methods: {
     itemClick1() {
-      this.$router.push("2")
+      this.$router.push("/teammember/2")
       console.log("团队信息")
     },
     itemClick2() {
-      this.$router.push("teamdoc2")
+      this.$router.push("/teammember/teamdoc/2")
       console.log("团队文档")
     },
+
     itemClick4() {
-      this.$confirm("确定退出该团队吗?", "提示", {
-      confirmButtonText: "确定",
-      cancelButtonText: "取消",
-      type: "warning",
-    })
-      .then(() => {
-        this.$message({
-          type: "success",
-          message: "已提交申请!",
-        });
+      const h = this.$createElement;
+      this.$msgbox({
+        title: "提示",
+        message: h("p", null, [
+          h("span", null, "确定退出团队吗"),
+        ]),
+        showCancelButton: true,
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        beforeClose: (action, instance, done) => {
+          if (action === "confirm") {
+            instance.confirmButtonLoading = true;
+            instance.confirmButtonText = "执行中...";
+            setTimeout(() => {
+              this.userL = JSON.parse(sessionStorage.getItem("userL"));
+              this.userID=this.userL.userID;
+              var _this=this;
+              axios
+                .post("http://127.0.0.1:8081/team/quit/", this.userID, this.$route.params.id)
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+              done();
+              setTimeout(() => {
+                instance.confirmButtonLoading = false;
+                this.reload();
+              }, 300);
+            }, 1000);
+          } else {
+            done();
+          }
+        },
       })
-      .catch(() => {
-        this.$message({
-          type: "info",
-          message: "已取消操作",
+        .then((action) => {
+          this.$message({
+            type: "info",
+            message: "已成功退出",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
+          });
         });
-      });
-    }
+    },
+
   },
 };
 </script>

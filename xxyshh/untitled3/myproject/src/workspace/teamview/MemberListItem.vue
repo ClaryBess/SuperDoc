@@ -8,16 +8,19 @@
         <p>{{memberItem.name}}</p>
       </div>
       <slot name="deleteIcon">
-        <img class="smallimg2" src="@/assets/删除.svg" @click="deleteMem" />
+        <img class="smallimg1" src="@/assets/删除.svg" @click="deleteMem" />
       </slot>
-      <img class="smallimg1" src="@/assets/管理.svg" @click="manageAuth" />
+
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MemberListItem",
+  inject:['reload'],
   data() {
     return {};
   },
@@ -35,10 +38,18 @@ export default {
       this.$router.push("/homepage");
     },
     deleteMem() {
-      alert("删除成员");
-    },
-    manageAuth() {
-      alert("管理成员权限");
+      var _this=this;
+      axios.post("http://127.0.0.1:8081/team/quit/" + this.$route.params.id, this.memberItem.id)
+        .then(function (response) {
+          _this.$message({
+            message: '已删除成员',
+            type: 'success'
+          });
+          _this.reload();
+        })
+        .catch(function (error) { // 请求失败处理
+          console.log(error);
+        });
     },
   },
 };

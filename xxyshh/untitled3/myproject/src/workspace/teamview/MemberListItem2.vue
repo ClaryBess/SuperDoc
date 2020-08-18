@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MemberListItem2",
   data() {
@@ -31,7 +33,18 @@ export default {
       this.$router.push("/homepage");
     },
     deleteMem() {
-      alert("删除成员");
+      var _this=this;
+      axios.post("http://127.0.0.1:8081/team/quit/" + this.$route.params.id, this.memberItem.id)
+        .then(function (response) {
+          _this.$message({
+            message: '已删除成员',
+            type: 'success'
+          });
+          _this.reload();
+        })
+        .catch(function (error) { // 请求失败处理
+          console.log(error);
+        });
     },
     manageAuth() {
       alert("管理成员权限");

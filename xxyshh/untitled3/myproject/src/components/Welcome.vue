@@ -110,6 +110,9 @@
         console.log(val);
       }
     },
+    created() {
+      sessionStorage.setItem('teamL', null);
+    }
   }
 </script>
 

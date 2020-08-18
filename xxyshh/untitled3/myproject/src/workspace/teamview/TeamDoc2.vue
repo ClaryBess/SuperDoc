@@ -18,11 +18,8 @@
         <el-button class="switch" style="margin-right: -5px" type="text" @click="toList">
           <i class="el-icon-s-unfold"></i>
         </el-button>
-
-        <!-- <doc-list :docs="teamDocs"></doc-list> -->
-        <doc-list v-show="showList" :docs="Docs" style="margin-top: 50px; margin-left: 25px"></doc-list>
-        <h2>{{id}}</h2>
-        <doc-list2 v-show="showMenu" :tems='Docs' style="width: 100%;"></doc-list2>
+        <team-doc-list1 v-show="showList" :docs="Docs" style="margin-top: 50px; margin-left: 25px"></team-doc-list1>
+        <team-doc-list2 v-show="showMenu" :tems='Docs' style="width: 100%;"></team-doc-list2>
 
       </el-main>
       <right-bar></right-bar>
@@ -33,13 +30,13 @@
 <script>
 import NavBar from "@/components/NavBar";
 import TeamSideBar2 from "./TeamSideBar2";
-import DocList from "../DocList";
 import RightBar from "../RightBar";
-import DocList2 from "../DocList2"
+import TeamDocList1 from "./TeamDocList1"
+import TeamDocList2 from "./TeamDocList2"
 
 export default {
   name: "TeamDoc2",
-  components: { NavBar, TeamSideBar2, DocList, RightBar,DocList2  },
+  components: { NavBar, TeamSideBar2,RightBar,TeamDocList1,TeamDocList2  },
   data() {
     return {
       headUrl: require("@/assets/head.jpg"),

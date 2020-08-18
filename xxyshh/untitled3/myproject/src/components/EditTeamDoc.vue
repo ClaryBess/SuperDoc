@@ -254,7 +254,21 @@
             return false;
           }
         });
+      },
+      getContent(){
+        var _this = this;
+        axios.post("http://127.0.0.1:8081/template/" + this.$route.params.template)
+          .then(function (response) {
+            var content = response.data;
+            _this.docForm.doc = content
+          })
+          .catch(function (error) { // 请求失败处理
+            console.log(error);
+          });
       }
+    },
+    created() {
+      this.getContent();
     }
   }
 </script>

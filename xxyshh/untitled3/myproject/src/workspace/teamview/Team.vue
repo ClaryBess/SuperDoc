@@ -34,11 +34,6 @@
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
-
-              <el-form-item class="item" label=" 添加成员：" :label-width="formLabelWidth">
-                <el-input placeholder="请输入ID" v-model="form.input3" class="input-with-select">
-                </el-input>
-              </el-form-item>
             </el-form>
 
             <div slot="footer" class="dialog-footer">
@@ -98,13 +93,13 @@ export default {
           id: '1',
           title: '湍湍湍湍',
           leader:'我',
-          member: ['喜羊羊','慢羊羊','灰太狼']
+          leaderID: '123'
         },
         {
           id: '2',
           title: 'mmmmm',
           leader:'美羊羊',
-          member: ['喜羊羊','慢羊羊','灰太狼']
+          leaderID: '456'
         },
       ],
       dialogTableVisible: false,
@@ -112,7 +107,6 @@ export default {
       form: {
         name: '',
         info: '',
-        input3:'',
       },
       rules: {
         name: [
@@ -129,28 +123,37 @@ export default {
   methods:{
     submitForm(formName) {
       dialogFormVisible = false;
-      if (this.loading) {
-        return;
-      }
-      this.$refs[formName].validate(
-        (valid) => {
-          if (valid) {
-            this.$confirm("确定提交吗？")
-              .then((_) => {
-                this.loading = true;
-                this.timer = setTimeout(() => {
-                  done();
-                  // 动画关闭需要一定的时间
-                  setTimeout(() => {
-                    this.loading = false;
-                  }, 400);
-                }, 2000);
-              })
-              .catch((_) => {});
-          } else {
-            // console.log('error submit!!');
-            return false;
-          }
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          var _this=this
+          var userL=JSON.parse(sessionStorage.getItem("userL"))
+          axios.post("http://127.0.0.1:8081/#",{
+            userID: userL.userID,
+            teamName: _this.form.name,
+            teamInfo: _this.form.info
+          })
+            .then(function (response) {
+              if(response.data.status === 200){
+                _this.$message({
+                  message: '新建团队成功',
+                  type: 'success'
+                });
+                _this.$router.push('/teamleader/' + response.data.data);
+              }
+              else {
+                _this.$message({
+                  message: '创建失败',
+                  type: 'error'
+                })
+              }
+            })
+            .catch(function (error) {
+              console.log(error)
+            })
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
       });
     },
 
@@ -158,6 +161,7 @@ export default {
       this.userL = JSON.parse(sessionStorage.getItem("userL"));
       console.log(this.userL);
       this.userID=this.userL.userID;
+      // 加入的团队列表
       axios.post("http://127.0.0.1:8081/#", this.userID)
         .then((res) => {
           console.log(res);

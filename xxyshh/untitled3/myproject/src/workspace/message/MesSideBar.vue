@@ -26,17 +26,15 @@ export default {
   props: {
     currentindex: {
       type: String,
-      default: '1'
+      default: '2'
     }
   },
   methods: {
     itemClick1() {
-      this.$emit('allMes')
-      console.log('全部消息')
+      this.$router.push('message')
       },
     itemClick2() {
-      this.$emit('unReadMes')
-      console.log('未读消息')
+      this.$router.push('unreadmessage')
     },
   },
 };

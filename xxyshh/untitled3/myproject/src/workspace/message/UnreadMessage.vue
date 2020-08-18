@@ -8,7 +8,7 @@
     <el-container>
       <el-aside width="15%">
         <!-- <mes-side-bar @unReadMes="handleUnReadMes" @allMes="handleAllMes"></mes-side-bar> -->
-        <mes-side-bar currentindex="1"></mes-side-bar>
+        <mes-side-bar currentindex="2"></mes-side-bar>
       </el-aside>
       <el-main style="width: 80%">
         <h2 class="h2color">消息界面</h2>
@@ -32,7 +32,7 @@ import MesList from "./MesList";
 import axios from "axios";
 
 export default {
-  name: "Message",
+  name: "UnreadMessage",
   components: { NavBar, RightBar, MesSideBar, MesList },
   data() {
     return {
@@ -46,9 +46,9 @@ export default {
     };
   },
   methods: {
-    // checkRead(mes) {
-    //   return mes.isRead == 0;
-    // },
+    checkRead(mes) {
+      return mes.isRead == 0;
+    },
     fetchList() {
       this.userL = JSON.parse(sessionStorage.getItem("userL"));
       this.userID = this.userL.userID;
@@ -56,13 +56,12 @@ export default {
         //  获取消息
         .post("http://127.0.0.1:8081/news/getNews", this.userID)
         .then((res) => {
-          console.log(this.data);
-          if (res.data == "") {
+          this.NowMess = res.data.filter(this.checkRead);
+          console.log(this.NowMess);
+          if (this.NowMess == "") {
             this.isNULL = true;
           } else {
             this.isNULL = false;
-            this.NowMess = res.data;
-            console.log(this.NowMess);
           }
         })
         .catch((err) => {

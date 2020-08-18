@@ -94,7 +94,6 @@ export default {
           .post("http://127.0.0.1:8081/browse/deleteBrowse", data)
           .then((res) => {
             var docL = res.data;
-            console.log(res);
           })
           .catch((err) => {
             console.log(err);
@@ -108,7 +107,6 @@ export default {
           .post("http://127.0.0.1:8081/collect/deleteCollect", data)
           .then((res) => {
             var docL = res.data;
-            console.log(res);
           })
           .catch((err) => {
             console.log(err);
@@ -118,12 +116,10 @@ export default {
           DocID: this.docsItem.docID,
           UserID: this.userID,
         };
-        console.log(data);
         axios
           .post("http://127.0.0.1:8081/created/deleteDocument", data)
           .then((res) => {
             var docL = res.data;
-            console.log(res);
           })
           .catch((err) => {
             console.log(err);

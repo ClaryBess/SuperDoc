@@ -27,7 +27,14 @@
     methods: {
       //点击进入模板预览界面
       itemClick() {
-        this.$router.push("/detail/" + this.TemItem.id);
+        //this.$router.push("/detail/" + this.TemItem.id);
+        var teamL=JSON.parse(sessionStorage.getItem("teamL"));
+        if(teamL === null){
+          this.$router.push("/edit/" + this.TemItem.id);
+        }
+        else{
+          this.$router.push("/editTeam/" + teamL + '/' + this.TemItem.id);
+        }
       },
     },
   };

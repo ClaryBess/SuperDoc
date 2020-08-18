@@ -28,7 +28,13 @@ export default {
     },
   methods: {
       itemClick() {
-        this.$router.push('/team/' + this.teamsItem.id)
+        var userL=JSON.parse(sessionStorage.getItem("userL"));
+        if(this.teamsItem.leaderID === userL.userID){
+          this.$router.push('/teamleader/' + this.teamsItem.id)
+        }
+        else{
+          this.$router.push('/teammember/' + this.teamsItem.id)
+        }
       }
     }
 };

@@ -20,7 +20,6 @@
         </el-button>
         <!-- <doc-list :docs="teamDocs"></doc-list> -->
         <doc-list v-show="showList" :docs="Docs" style="margin-top: 50px; margin-left: 25px"></doc-list>
-        <h2>{{id}}</h2>
         <doc-list2 v-show="showMenu" :tems='Docs' style="width: 100%;"></doc-list2>
       </el-main>
       <right-bar></right-bar>

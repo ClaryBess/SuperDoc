@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-item">
+  <div class="goods-item" @click="itemClick">
     <el-card class="box-card" shadow="always">
       <div style="float: right">
         <el-dropdown>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   name: "MenuListItem",

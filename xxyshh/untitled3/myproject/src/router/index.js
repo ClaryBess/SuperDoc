@@ -26,6 +26,7 @@ import EditTeamDoc from "../components/EditTeamDoc";
 import ChangeTeamDoc from "../components/ChangeTeamDoc";
 
 import Message from "../workspace/message/Message";
+import UnreadMessage from "../workspace/message/UnreadMessage";
 import NavBarOrigin from "../components/NavBarOrigin";
 
 Vue.use(VueRouter)
@@ -47,7 +48,7 @@ const routes = [
     component: Register3
   },
   {
-    path: '/edit',
+    path: '/edit/:template',
     name: 'edit',
     component: Edit
   },
@@ -96,20 +97,14 @@ const routes = [
     name: 'view',
     component: View
   },
-  // {
-  //   path: '/team/:id',
-  //   name: 'teamview',
-  //   component: TeamView
-  // },
-  //用于测试创建者的团队界面
   {
-    path: '/team/1',
+    path: '/teamleader/:id',
     name: 'teamview1',
     component: TeamView1
   },
   //用于测试成员的团队界面
   {
-    path: '/team/2',
+    path: '/teammember/:id',
     name: 'teamview2',
     component: TeamView2
   },
@@ -126,13 +121,13 @@ const routes = [
   },
   // 团队文档-组长
   {
-    path: '/team/teamdoc',
+    path: '/teamleader/teamdoc/:id',
     name: 'teamdoc',
     component: TeamDoc
   },
   // 团队文档-成员
   {
-    path: '/team/teamdoc2',
+    path: '/teammember/teamdoc/:id',
     name: 'teamdoc2',
     component: TeamDoc2
   },
@@ -143,12 +138,17 @@ const routes = [
     component: Message
   },
   {
+    path: '/unreadmessage',
+    name: 'unreadmessage',
+    component: UnreadMessage
+  },
+  {
     path: '/change/:id',
     name: 'change',
     component: Change
   },
   {
-    path: '/editTeam/:tid',
+    path: '/editTeam/:tid/:template',
     name: 'editTeam',
     component: EditTeamDoc
   },

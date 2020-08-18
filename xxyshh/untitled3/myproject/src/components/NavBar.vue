@@ -8,7 +8,7 @@
         <router-link to="/recently">工作台</router-link>
       </li>
       <li>
-        <router-link to="/message">消息</router-link>
+        <router-link to="/unreadmessage">消息</router-link>
         <!-- <a href="#">消息</a> -->
       </li>
       <li>

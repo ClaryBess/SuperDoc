@@ -25,6 +25,12 @@ export default {
         this.IsRouterAlive = true;
       });
     },
+    quitload() {
+      this.IsRouterAlive = false;
+      this.$nextTick(function () {
+        this.IsRouterAlive = true;
+      });
+    },
   },
 };
 </script>

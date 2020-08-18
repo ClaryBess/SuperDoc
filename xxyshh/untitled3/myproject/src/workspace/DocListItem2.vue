@@ -2,17 +2,18 @@
   <div class="goods-item" @click="itemClick">
     <el-card class="box-card" shadow="always">
       <div style="float: right">
-        <el-dropdown>
-          <span class="el-dropdown-link">
-            <i class="el-icon-setting el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <!-- <el-dropdown-item ><el-button type="text" @click="fav">收藏</el-button></el-dropdown-item> -->
-            <el-dropdown-item>
-              <el-button type="text" @click="open">删除</el-button>
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+        <slot name="dropdown">
+          <el-dropdown>
+            <span class="el-dropdown-link">
+              <i class="el-icon-setting el-icon--right"></i>
+            </span>
+            <el-dropdown-menu>
+              <el-dropdown-item>
+                <el-button type="text" @click="open">删除</el-button>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </slot>
       </div>
       <!-- <img :src="TemItem.img" alt=""> -->
       <img class="mainImg" src="../assets/文档.svg" />
