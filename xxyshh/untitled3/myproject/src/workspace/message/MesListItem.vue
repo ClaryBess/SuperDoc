@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "MesListItem",
@@ -44,7 +44,19 @@ export default {
               message: "已成功加入此团队!",
             });
             // 加入团队的接口操作
-            this.reload();
+            // let data = {
+            //   DocID: this.docsItem.docID,
+            //   UserID: this.userID,
+            // };
+            // axios
+            //   .post("/collect/deleteCollect", data)
+            //   .then((res) => {
+            //     console.log(res);
+            //   })
+            //   .catch((err) => {
+            //     console.log(err);
+            //   });
+            // this.reload();
           })
           .catch(() => {
             this.$message({
