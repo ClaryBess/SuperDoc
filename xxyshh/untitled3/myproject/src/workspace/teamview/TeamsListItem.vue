@@ -3,8 +3,8 @@
       <div class="teams-item">
         <img class="teamsimg" src="@/assets/团队.svg" @click="itemClick">
         <div class="teams-info" @click="itemClick">
-          <p>团队名称：{{teamsItem.title}}</p>
-          <p>创建者：{{teamsItem.leader}} </p>
+          <p>团队名称：{{teamsItem.teamName}}</p>
+          <p>创建者：{{teamsItem.leaderName}} </p>
         </div>
       </div>
   </div>
@@ -28,7 +28,16 @@ export default {
     },
   methods: {
       itemClick() {
-        this.$router.push('/team/' + this.teamsItem.id)
+        var userL=JSON.parse(sessionStorage.getItem("userL"));
+        console.log(userL.userID);
+
+        console.log(this.teamsItem);
+        if(this.teamsItem.leaderID === userL.userID){
+          this.$router.push('/teamleader/' + this.teamsItem.teamID)
+        }
+        else{
+          this.$router.push('/teammember/' + this.teamsItem.teamID)
+        }
       }
     }
 };

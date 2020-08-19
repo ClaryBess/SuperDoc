@@ -10,10 +10,24 @@
         <SideBar currentindex="5"></SideBar>
       </el-aside>
       <el-main style="width: 80%">
-        <delete-all class="all-delete"></delete-all>
+        <el-button class="switch" type="text" @click="toMenu">
+          <i class="el-icon-menu"></i>
+        </el-button>
+        <el-button class="switch" style="margin-right: -5px" type="text" @click="toList">
+          <i class="el-icon-s-unfold"></i>
+        </el-button>
+        <delete-all class="switch" :userID="userID"></delete-all>
+
         <h2 class="h2color">回收站</h2>
         <!-- <doc-list :docs="recycleDocs"></doc-list> -->
-        <delete-list :docs="Docs"></delete-list>
+        <delete-list v-show="showList" :docs="Docs" :userID="userID"></delete-list>
+        <menu-list v-show="showMenu" :menus="Docs" :userID="userID" style="width: 100%"></menu-list>
+
+        <div style="margin-left: 41%; margin-top: 8%" v-show="this.isNULL">
+          <div><img src="../assets/空.png" style=" width: 110px"></div>
+
+        </div>
+
       </el-main>
       <right-bar></right-bar>
     </el-container>
@@ -26,6 +40,8 @@ import SideBar from "./SideBar";
 import DeleteList from "./DeleteList";
 import RightBar from "./RightBar";
 import DeleteAll from "./DeleteAll";
+import MenuList from "./MenuList";
+import axios from 'axios';
 
 export default {
   name: "Recycle",
@@ -35,135 +51,64 @@ export default {
     DeleteList,
     RightBar,
     DeleteAll,
+    MenuList,
   },
   data() {
     return {
       headUrl: require("../assets/head.jpg"),
-      Docs: [
-        {
-          id: "1",
-          title: "第111",
-        },
-        {
-          id: "2",
-          title: "第二个hhhhh文档",
-        },
-        {
-          id: "3",
-          title: "第三个文dashdkjlashdjkl档",
-        },
-        {
-          id: "4",
-          title: "sisisi",
-        },
-        {
-          id: "1",
-          title: "第111",
-        },
-        {
-          id: "2",
-          title: "第二个hhhhh文档",
-        },
-        {
-          id: "3",
-          title: "第三个文dashdkjlashdjkl档",
-        },
-        {
-          id: "4",
-          title: "sisisi",
-        },
-        {
-          id: "1",
-          title: "第111",
-        },
-        {
-          id: "2",
-          title: "第二个hhhhh文档",
-        },
-        {
-          id: "3",
-          title: "第三个文dashdkjlashdjkl档",
-        },
-        {
-          id: "4",
-          title: "sisisi",
-        },
-        {
-          id: "1",
-          title: "第111",
-        },
-        {
-          id: "2",
-          title: "第二个hhhhh文档",
-        },
-        {
-          id: "3",
-          title: "第三个文dashdkjlashdjkl档",
-        },
-        {
-          id: "4",
-          title: "sisisi",
-        },
-        {
-          id: "1",
-          title: "第111",
-        },
-        {
-          id: "2",
-          title: "第二个hhhhh文档",
-        },
-        {
-          id: "3",
-          title: "第三个文dashdkjlashdjkl档",
-        },
-        {
-          id: "4",
-          title: "sisisi",
-        },
-        {
-          id: "1",
-          title: "第111",
-        },
-        {
-          id: "2",
-          title: "第二个hhhhh文档",
-        },
-        {
-          id: "3",
-          title: "第三个文dashdkjlashdjkl档",
-        },
-        {
-          id: "4",
-          title: "sisisi",
-        },
-        {
-          id: "1",
-          title: "第111",
-        },
-        {
-          id: "2",
-          title: "第二个hhhhh文档",
-        },
-        {
-          id: "3",
-          title: "第三个文dashdkjlashdjkl档",
-        },
-        {
-          id: "4",
-          title: "sisisi",
-        },
-      ],
+      Docs: [],
+      userID: 1,
+      showMenu: false,
+      showList: true,
+      isNULL: true,
     };
+  },
+
+  methods: {
+    toMenu: function () {
+      this.showMenu = true;
+      this.showList = false;
+    },
+    toList: function () {
+      this.showList = true;
+      this.showMenu = false;
+    },
+
+    fetchList() {
+      this.userL = JSON.parse(sessionStorage.getItem("userL"));
+      console.log(this.userL);
+      this.userID=this.userL.userID;
+      axios
+        .post("/recycle/getRecycle", this.userID)
+        .then((res) => {
+          if (res.data == "") {
+            this.isNULL = true;
+          } else {
+            this.isNULL = false;
+            var docL = res.data;
+            var _this = this;
+            _this.Docs = docL;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  created() {
+    this.fetchList();
   },
 };
 </script>
-<style>
+<style scoped>
 .h2color {
-  color: #7093ff;
+  color: #3369e7;
 }
-.all-delete {
-  position: absolute;
-  right:17%;
-  height: 15%;
+.switch {
+  width: 40px;
+  float: right;
+  margin-top: 35px;
+  margin-right: 40px;
 }
+
 </style>

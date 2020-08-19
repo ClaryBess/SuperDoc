@@ -25,7 +25,7 @@
         <el-form :model="form" :label-position="labelPos">
           <el-form-item label="用户名" style="margin-bottom: 15px" >
             <el-col span=24>
-              <el-input placeholder="USERNAME" v-model="form.userID" autocomplete="off" clearable></el-input>
+              <el-input placeholder="USERNAME" v-model="form.userName" autocomplete="off" clearable></el-input>
             </el-col>
           </el-form-item>
           <el-form-item label="密码" style="margin-bottom: 40px">
@@ -34,17 +34,18 @@
             </el-col>
           </el-form-item>
         </el-form>
-        <SliderVerificationCode v-model="slider" background="#FFFFFF" contentColor="#333333" content="> > > 请拖动滑块 > > >"/>
+        <SliderVerificationCode v-model="slider" background="#CCCCCC"/>
       </div>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button type="primary" @click="loginForm('ruleForm')">确 定</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
+  import axios from "axios";
   export default {
     name: "NavBarOrigin",
     data() {
@@ -53,7 +54,7 @@
         dialogFormVisible: false,
         labelPos: 'right',
         form: {
-          userID: '',
+          userName: '',
           password: ''
         },
         slider: false
@@ -65,6 +66,34 @@
       },
       inputBlur: function() {
         this.search = 'search'
+      },
+      loginForm(formName){
+        var _this=this
+        //axios 需要 import,下面form 对象要与上面view 填写的一样
+        axios.post("http://127.0.0.1:8081/user/login",{
+          userName:this.form.userName,
+          password:this.form.password,
+        })
+          .then(function (response) {
+            // console.log(response.data.status)
+            if(response.data.status === 200){
+              //alert("恭喜你，登录成功")
+                _this.$message({
+                message: '恭喜你，登录成功'+JSON.stringify(response.data.data),
+                type: 'success'
+              })
+              sessionStorage.setItem('userL', JSON.stringify(response.data.data))
+              sessionStorage.setItem('teamL', null);
+              _this.$router.push('WorkSpace')
+            }else {
+              _this.$message({
+                message: '用户名或密码输入错误！',
+                type: 'error'
+              })
+            }
+          }).catch(function (error) {
+          console.log(error)
+        })
       },
     }
   }

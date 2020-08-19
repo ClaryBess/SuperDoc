@@ -43,7 +43,7 @@ export default {
       this.$router.push("recently")
     },
     itemClick2() {
-      this.$router.push("favourite")
+      this.$router.push("collect")
     },
     itemClick3() {
       this.$router.push("created")

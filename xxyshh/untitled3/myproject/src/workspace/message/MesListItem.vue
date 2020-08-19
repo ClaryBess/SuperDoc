@@ -5,17 +5,23 @@
       <div class="mes-info" @click="itemClick">
         <p>{{ mesItem.content }}</p>
       </div>
+      <div class="mes-time" @click="itemClick">
+        <p>{{mesItem.dateTime}}</p>
+      </div>
       <img class="messmallimg" src="@/assets/删除.svg" @click="deleteMes" />
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "MesListItem",
   data() {
     return {};
   },
+  inject: ["reload"],
   props: {
     mesItem: {
       type: Object,
@@ -25,36 +31,106 @@ export default {
     },
   },
   methods: {
+    open() {
+      if (this.mesItem.type == 1) {
+        this.$confirm("是否要加入此团队?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "拒绝",
+          type: "warning",
+        })
+          .then(() => {
+            this.$message({
+              type: "success",
+              message: "已成功加入此团队!",
+            });
+            // 加入团队的接口操作
+            this.reload();
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已拒绝加入此团队",
+            });
+          });
+      } else {
+        setTimeout(() => {
+          this.reload();
+        }, 300);
+      }
+    },
     itemClick() {
       // 将是否已读设置为已读
-      this.mesItem.isRead = true;
-      if(this.mesItem.type == 'invitation')
-      this.$confirm("是否要加入此团队?", "提示", {
+      this.open();
+      let data = {
+        NewsID: this.mesItem.newsID,
+        UserID: this.userID,
+      };
+      console.log(data);
+      axios
+        .post("/news/readNews", data)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    deleteMes() {
+      const h = this.$createElement;
+      this.$msgbox({
+        title: "提示",
+        message: h("p", null, [
+          h("span", null, "此操作将删除该消息, 是否继续?"),
+        ]),
+        showCancelButton: true,
         confirmButtonText: "确定",
-        cancelButtonText: "拒绝",
-        type: "warning",
+        cancelButtonText: "取消",
+        beforeClose: (action, instance, done) => {
+          if (action === "confirm") {
+            instance.confirmButtonLoading = true;
+            instance.confirmButtonText = "执行中...";
+            setTimeout(() => {
+              let data = {
+                NewsID: this.mesItem.newsID,
+                UserID: this.userID,
+              };
+              axios
+                .post("/news/deleteNews", data)
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+              done();
+              setTimeout(() => {
+                instance.confirmButtonLoading = false;
+                this.reload();
+              }, 300);
+            }, 1000);
+          } else {
+            done();
+          }
+        },
       })
-        .then(() => {
+        .then((action) => {
           this.$message({
-            type: "success",
-            message: "已成功加入此团队!",
+            type: "info",
+            message: "已成功删除",
           });
         })
         .catch(() => {
           this.$message({
             type: "info",
-            message: "已拒绝加入此团队",
+            message: "已取消删除",
           });
         });
-    },
-    deleteMes() {
-      alert("删除消息");
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .mes {
   position: relative;
   padding: 10px;
@@ -96,5 +172,16 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: 3px;
+}
+.mes-time {
+  font-size: 12px;
+  position: absolute;
+  right: 70px;
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  overflow: hidden;
+  text-align: left;
 }
 </style>

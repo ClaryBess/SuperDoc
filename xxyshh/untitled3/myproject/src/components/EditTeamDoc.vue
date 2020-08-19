@@ -14,46 +14,46 @@
               <p>你可以使用“模板”功能来快速创建文档</p>
             </div>
             <div style="margin-top: 40px;">
-              <el-form :model="docForm" label-width="80px">
+              <el-form :model="docForm" label-width="80px" :rules="rule" ref="docForm">
                 <el-row>
-                  <el-form-item label="文档标题">
+                  <el-form-item label="文档标题" prop="title">
                     <el-input v-model="docForm.title"></el-input>
                   </el-form-item>
                 </el-row>
                 <p style="margin-left: 12px; font-size: 14px">文档权限：</p>
                 <el-row>
                   <el-col span="6">
-                    <el-form-item label="查看">
+                    <el-form-item label="查看" prop="viewP">
                       <el-select v-model="docForm.viewP" placeholder="请选择">
                         <el-option label="不公开" value="0"></el-option>
-                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="仅团队" value="2"></el-option>
                         <el-option label="所有人" value="1"></el-option>
                       </el-select>
                     </el-form-item>
                   </el-col>
                   <el-col span="6">
-                    <el-form-item label="评论">
+                    <el-form-item label="评论" prop="commentP">
                       <el-select v-model="docForm.commentP" placeholder="请选择">
                         <el-option label="不公开" value="0"></el-option>
-                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="仅团队" value="2"></el-option>
                         <el-option label="所有人" value="1"></el-option>
                       </el-select>
                     </el-form-item>
                   </el-col>
                   <el-col span="6">
-                    <el-form-item label="编辑">
+                    <el-form-item label="编辑" prop="editP">
                       <el-select v-model="docForm.editP" placeholder="请选择">
                         <el-option label="不公开" value="0"></el-option>
-                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="仅团队" value="2"></el-option>
                         <el-option label="所有人" value="1"></el-option>
                       </el-select>
                     </el-form-item>
                   </el-col>
                   <el-col span="6">
-                    <el-form-item label="分享">
+                    <el-form-item label="分享" prop="shareP">
                       <el-select v-model="docForm.shareP" placeholder="请选择">
                         <el-option label="不公开" value="0"></el-option>
-                        <el-option label="仅团队" value="1"></el-option>
+                        <el-option label="仅团队" value="2"></el-option>
                         <el-option label="所有人" value="1"></el-option>
                       </el-select>
                     </el-form-item>
@@ -64,7 +64,7 @@
                 </div>
 
                 <el-form-item class="button-row">
-                  <el-button type="primary" @click="onSubmit" >提交</el-button>
+                  <el-button type="primary" @click="onSubmit('docForm')" >提交</el-button>
                   <el-button style="margin-left: 30px">取消</el-button>
                 </el-form-item>
               </el-form>
@@ -81,6 +81,7 @@
   import UEditor from "./UEditor";
   import NavBar from "./NavBar";
   import VueUeditorWrap from "vue-ueditor-wrap";
+  import axios from "axios";
   export default {
     name: "EditTeamDoc",
     components: {UEditor, NavBar, VueUeditorWrap},
@@ -94,6 +95,24 @@
           commentP: '',
           editP: '',
           shareP: ''
+        },
+        rule: {
+          title: [
+            { required: true, message: '请输入标题', trigger: 'blur'},
+            {max: 25, message: '标题长度在25字以内', trigger: 'change'}
+          ],
+          viewP: [
+            { required: true, message: '请选择权限', trigger: 'change'}
+          ],
+          commentP: [
+            { required: true, message: '请选择权限', trigger: 'change'}
+          ],
+          editP: [
+            { required: true, message: '请选择权限', trigger: 'change'}
+          ],
+          shareP: [
+            { required: true, message: '请选择权限', trigger: 'change'}
+          ]
         },
         ueConfig:{
           toolbars: [
@@ -142,7 +161,7 @@
               'fontsize', // 字号
               // 'paragraph', // 段落格式
               'simpleupload', // 单图上传
-              'insertimage', // 多图上传
+              //'insertimage', // 多图上传
               'edittable', // 表格属性
               'edittd', // 单元格属性
               // 'link', // 超链接
@@ -196,9 +215,60 @@
           initialFrameWidth: "100%",
           // 上传文件接口
           enableAutoSave: true,
-          autoHeightEnabled:false
+          autoHeightEnabled:false,
+          serverUrl: "http://127.0.0.1:8081"
         }
       }
+    },
+    methods: {
+      onSubmit(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            var _this=this
+            console.log(axios);
+            var userL=JSON.parse(sessionStorage.getItem("userL"))
+            axios.post("http://127.0.0.1:8081/doc",{
+              userID: userL.userID,
+              title: this.docForm.title,
+              content: this.docForm.doc,
+              privilege: this.docForm.viewP*1000 + this.docForm.editP*100 + this.docForm.commentP*10 + this.docForm.shareP,
+              isTeam: 1,
+              team: this.$route.params.tid
+            })
+              .then(function (response) {
+                // console.log(response.data.status)
+                if(response.data.status === 200){
+                  //alert("新建文档成功")
+                  _this.$message({
+                    message: '新建文档成功',
+                    type: 'success'
+                  })
+                  _this.$router.push('/detail/' + response.data.data)
+                }
+              })
+              .catch(function (error) {
+                console.log(error)
+              })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      getContent(){
+        var _this = this;
+        axios.post("http://127.0.0.1:8081/template/" + this.$route.params.template)
+          .then(function (response) {
+            var content = response.data;
+            _this.docForm.doc = content
+          })
+          .catch(function (error) { // 请求失败处理
+            console.log(error);
+          });
+      }
+    },
+    created() {
+      this.getContent();
     }
   }
 </script>
