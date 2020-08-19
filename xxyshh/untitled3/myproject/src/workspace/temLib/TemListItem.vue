@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" @click="itemClick">
-    <el-card class="box-card" shadow="always">
+    <el-card class="box-card" shadow="hover">
       <!-- <img :src="TemItem.img" alt=""> -->
       <img :src=TemItem.picUrl alt />
       <div class="goods-info">
@@ -47,10 +47,11 @@
   }
 
   .goods-item img {
-    width: 240px;
+    width: 90%;
     border-radius: 20px;
     padding: 5px;
     margin-top: 8px;
+    margin-left: 3%;
   }
 
   .goods-info {
